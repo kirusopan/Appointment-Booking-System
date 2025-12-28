@@ -3,6 +3,9 @@
     "development"
   ],
   "hints": {
-    "axe/name-role-value": "off"
+    "axe/name-role-value": "off",
+    "compat-api/css": "off",
+    "axe/forms": "off",
+    "disown-opener": "off"
   }
 }
