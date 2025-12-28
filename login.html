@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookEase - Appointment Booking System</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/auth.css">
+</head>
+
+<body>
+
+    <!-- Main Content -->
+    <main>
+
+        <!-- ===== LOGIN PAGE ===== -->
+        <section class="auth-section">
+            <div class="auth-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+
+            <div class="container">
+                <div class="row justify-content-center align-items-center min-vh-100 py-5">
+                    <div class="col-lg-10">
+                        <div class="auth-container">
+                            <div class="row g-0">
+
+                                <!-- Left Side - Branding -->
+                                <div class="col-lg-6 auth-left">
+                                    <div class="auth-branding">
+                                        <div class="brand-logo mb-4" data-animate="fade-in">
+                                            <i class="bi bi-calendar-check-fill"></i>
+                                        </div>
+                                        <h2 class="brand-title mb-3" data-animate="fade-in-up">Welcome to BookEase</h2>
+                                        <p class="brand-subtitle mb-4" data-animate="fade-in-up">Your complete
+                                            appointment booking solution</p>
+
+                                        <div class="auth-features" data-animate="fade-in-up">
+                                            <div class="feature-item">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                                <span>Easy appointment scheduling</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                                <span>Real-time availability</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                                <span>Automated reminders</span>
+                                            </div>
+                                            <div class="feature-item">
+                                                <i class="bi bi-check-circle-fill"></i>
+                                                <span>Secure & private</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="auth-stats mt-5" data-animate="fade-in">
+                                            <div class="stat-item">
+                                                <h3>5000+</h3>
+                                                <p>Happy Users</p>
+                                            </div>
+                                            <div class="stat-item">
+                                                <h3>15K+</h3>
+                                                <p>Bookings</p>
+                                            </div>
+                                            <div class="stat-item">
+                                                <h3>4.9★</h3>
+                                                <p>Rating</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Right Side - Login Form -->
+                                <div class="col-lg-6 auth-right">
+                                    <div class="auth-form-container">
+                                        <div class="text-center mb-4">
+                                            <h3 class="auth-title">Sign In</h3>
+                                            <p class="text-muted">Welcome back! Please enter your details</p>
+                                        </div>
+
+                                        <!-- Social Login -->
+                                        <div class="social-login mb-4">
+                                            <button class="btn btn-social btn-google">
+                                                <i class="bi bi-google"></i>
+                                                Continue with Google
+                                            </button>
+                                            <button class="btn btn-social btn-facebook">
+                                                <i class="bi bi-facebook"></i>
+                                                Continue with Facebook
+                                            </button>
+                                        </div>
+
+                                        <div class="divider">
+                                            <span>or</span>
+                                        </div>
+
+                                        <!-- Login Form -->
+                                        <form id="loginForm">
+                                            <div class="mb-3">
+                                                <label class="form-label">Email Address</label>
+                                                <div class="input-with-icon">
+                                                    <i class="bi bi-envelope"></i>
+                                                    <input type="email" class="form-control" name="email"
+                                                        placeholder="john@example.com" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="mb-3">
+                                                <label class="form-label">Password</label>
+                                                <div class="input-with-icon">
+                                                    <i class="bi bi-lock"></i>
+                                                    <input type="password" class="form-control" name="password"
+                                                        id="loginPassword" placeholder="Enter your password" required>
+                                                    <button type="button" class="password-toggle"
+                                                        onclick="togglePassword('loginPassword')">
+                                                        <i class="bi bi-eye"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+
+                                            <div class="d-flex justify-content-between align-items-center mb-4">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="rememberMe"
+                                                        name="rememberMe">
+                                                    <label class="form-check-label" for="rememberMe">
+                                                        Remember me
+                                                    </label>
+                                                </div>
+                                                <a href="#" class="forgot-link" onclick="showForgotPassword()">Forgot
+                                                    password?</a>
+                                            </div>
+
+                                            <button type="submit" class="btn btn-primary btn-lg w-100 mb-3">
+                                                <i class="bi bi-box-arrow-in-right me-2"></i>Sign In
+                                            </button>
+
+                                            <p class="text-center text-muted mb-0">
+                                                Don't have an account?
+                                                <a href="register.html" class="auth-link">Sign up for free</a>
+                                            </p>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== FORGOT PASSWORD MODAL ===== -->
+        <div class="modal fade" id="forgotPasswordModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header border-0">
+                        <h5 class="modal-title">Reset Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-muted mb-4">Enter your email address and we'll send you a link to reset your
+                            password.</p>
+                        <form id="forgotPasswordForm">
+                            <div class="mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control" name="resetEmail"
+                                    placeholder="john@example.com" required>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-send me-2"></i>Send Reset Link
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SUCCESS MODAL ===== -->
+        <div class="modal fade" id="loginSuccessModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-body text-center py-5">
+                        <div class="success-icon mb-4">
+                            <i class="bi bi-check-circle-fill"></i>
+                        </div>
+                        <h3 class="mb-3">Welcome Back!</h3>
+                        <p class="text-muted mb-4">You have successfully logged in to your account.</p>
+                        <button class="btn btn-primary" onclick="redirectToDashboard()">
+                            Go to Dashboard
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/auth.js"></script>
+</body>
+
+</html>
