@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Staff Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
-    <link rel="stylesheet" href="assets/styles/staff.css">
+    <link rel="stylesheet" href="assets/styles/staff-schedule.css">
 </head>
+
 <body class="staff-panel">
 
     <!-- ===== TOP HEADER BAR ===== -->
@@ -45,7 +48,8 @@
 
                 <div class="header-right">
                     <!-- Quick Actions -->
-                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal" data-bs-target="#quickAddModal">
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
                         <i class="bi bi-plus-circle"></i>
                     </button>
 
@@ -102,7 +106,8 @@
                     <!-- User Menu -->
                     <div class="dropdown">
                         <button class="staff-user-btn" data-bs-toggle="dropdown">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Staff" class="staff-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
                             <div class="staff-info">
                                 <span class="staff-name">Sarah Johnson</span>
                                 <span class="staff-role">Senior Consultant</span>
@@ -144,7 +149,7 @@
             <nav class="staff-nav">
                 <ul class="nav-list">
                     <li class="nav-item active">
-                        <a href="staff-dashboard.html" class="nav-link">
+                        <a href="staff.html" class="nav-link">
                             <i class="bi bi-speedometer2"></i>
                             <span>Dashboard</span>
                         </a>
@@ -241,9 +246,463 @@
     <!-- ===== MAIN CONTENT AREA ===== -->
     <main class="staff-main-content">
         <div class="content-wrapper">
-            
 
-            
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">My Schedule</h1>
+                    <p class="page-subtitle">Manage your appointments and availability</p>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn btn-outline-secondary" id="printScheduleBtn">
+                        <i class="bi bi-printer me-2"></i>Print
+                    </button>
+                    <button class="btn btn-outline-primary" id="exportScheduleBtn">
+                        <i class="bi bi-download me-2"></i>Export
+                    </button>
+                    <button class="btn btn-primary" id="addBlockTimeBtn">
+                        <i class="bi bi-calendar-x me-2"></i>Block Time
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== VIEW CONTROLS & FILTERS ===== -->
+            <div class="schedule-controls mb-4">
+                <div class="row g-3 align-items-center">
+                    <div class="col-lg-4">
+                        <div class="view-switcher">
+                            <button class="view-btn active" data-view="day">
+                                <i class="bi bi-calendar-day"></i>
+                                <span>Day</span>
+                            </button>
+                            <button class="view-btn" data-view="week">
+                                <i class="bi bi-calendar-week"></i>
+                                <span>Week</span>
+                            </button>
+                            <button class="view-btn" data-view="month">
+                                <i class="bi bi-calendar3"></i>
+                                <span>Month</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="date-navigator">
+                            <button class="nav-btn" id="prevDate">
+                                <i class="bi bi-chevron-left"></i>
+                            </button>
+                            <div class="current-date-display">
+                                <h5 id="currentDateDisplay">Sunday, December 28, 2024</h5>
+                            </div>
+                            <button class="nav-btn" id="nextDate">
+                                <i class="bi bi-chevron-right"></i>
+                            </button>
+                            <button class="btn btn-sm btn-outline-primary ms-3" id="todayBtn">Today</button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="schedule-filters">
+                            <select class="form-select form-select-sm" id="statusFilter">
+                                <option value="all">All Status</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="pending">Pending</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== SCHEDULE STATS ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="schedule-stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>8</h4>
+                            <p>Today's Appointments</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="schedule-stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>12h 30m</h4>
+                            <p>Working Hours</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="schedule-stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>3h</h4>
+                            <p>Available Time</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="schedule-stat-card">
+                        <div class="stat-icon bg-info">
+                            <i class="bi bi-calendar-x"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>2</h4>
+                            <p>Blocked Slots</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MAIN SCHEDULE VIEW ===== -->
+            <div class="row g-4">
+
+                <!-- ===== DAY VIEW (DEFAULT) ===== -->
+                <div class="col-lg-9">
+                    <div class="staff-card schedule-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-calendar-day me-2"></i>Day Schedule
+                            </h5>
+                            <div class="legend">
+                                <span class="legend-item"><span class="dot dot-confirmed"></span>Confirmed</span>
+                                <span class="legend-item"><span class="dot dot-pending"></span>Pending</span>
+                                <span class="legend-item"><span class="dot dot-blocked"></span>Blocked</span>
+                            </div>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="day-schedule-view">
+                                <div class="time-grid">
+
+                                    <!-- Time Slot 8:00 AM - Available -->
+                                    <div class="time-slot empty">
+                                        <div class="time-label">08:00 AM</div>
+                                        <div class="slot-content available-slot">
+                                            <button class="add-appointment-btn">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <span>Add Appointment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 9:00 AM - Booked -->
+                                    <div class="time-slot booked">
+                                        <div class="time-label">09:00 AM</div>
+                                        <div class="slot-content appointment-slot-content confirmed">
+                                            <div class="appointment-header">
+                                                <div class="appointment-time">9:00 AM - 10:30 AM</div>
+                                                <div class="appointment-actions-mini">
+                                                    <button class="btn-mini" title="Edit"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                    <button class="btn-mini" title="Cancel"><i
+                                                            class="bi bi-x-lg"></i></button>
+                                                </div>
+                                            </div>
+                                            <h6 class="appointment-title">Business Strategy Meeting</h6>
+                                            <div class="appointment-client-mini">
+                                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&q=80"
+                                                    alt="Client">
+                                                <span>John Anderson</span>
+                                            </div>
+                                            <div class="appointment-meta-mini">
+                                                <span><i class="bi bi-geo-alt"></i> Online Meeting</span>
+                                                <span><i class="bi bi-cash"></i> $120</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 10:30 AM - Available -->
+                                    <div class="time-slot empty">
+                                        <div class="time-label">10:30 AM</div>
+                                        <div class="slot-content available-slot">
+                                            <button class="add-appointment-btn">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <span>Add Appointment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 11:00 AM - Booked -->
+                                    <div class="time-slot booked">
+                                        <div class="time-label">11:00 AM</div>
+                                        <div class="slot-content appointment-slot-content confirmed">
+                                            <div class="appointment-header">
+                                                <div class="appointment-time">11:00 AM - 12:00 PM</div>
+                                                <div class="appointment-actions-mini">
+                                                    <button class="btn-mini" title="Edit"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                    <button class="btn-mini" title="Cancel"><i
+                                                            class="bi bi-x-lg"></i></button>
+                                                </div>
+                                            </div>
+                                            <h6 class="appointment-title">Personal Consultation</h6>
+                                            <div class="appointment-client-mini">
+                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&q=80"
+                                                    alt="Client">
+                                                <span>Emma Wilson</span>
+                                            </div>
+                                            <div class="appointment-meta-mini">
+                                                <span><i class="bi bi-geo-alt"></i> Room 204</span>
+                                                <span><i class="bi bi-cash"></i> $50</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 12:00 PM - Lunch Break (Blocked) -->
+                                    <div class="time-slot blocked">
+                                        <div class="time-label">12:00 PM</div>
+                                        <div class="slot-content blocked-slot-content">
+                                            <div class="blocked-info">
+                                                <i class="bi bi-dash-circle"></i>
+                                                <span>Lunch Break</span>
+                                            </div>
+                                            <button class="btn-mini" title="Remove"><i class="bi bi-x-lg"></i></button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 1:00 PM - Available -->
+                                    <div class="time-slot empty">
+                                        <div class="time-label">01:00 PM</div>
+                                        <div class="slot-content available-slot">
+                                            <button class="add-appointment-btn">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <span>Add Appointment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 2:00 PM - Booked (Pending) -->
+                                    <div class="time-slot booked">
+                                        <div class="time-label">02:00 PM</div>
+                                        <div class="slot-content appointment-slot-content pending">
+                                            <div class="appointment-header">
+                                                <div class="appointment-time">2:00 PM - 2:45 PM</div>
+                                                <div class="appointment-actions-mini">
+                                                    <button class="btn-mini btn-success" title="Accept"><i
+                                                            class="bi bi-check-lg"></i></button>
+                                                    <button class="btn-mini btn-danger" title="Decline"><i
+                                                            class="bi bi-x-lg"></i></button>
+                                                </div>
+                                            </div>
+                                            <h6 class="appointment-title">Technical Support Session</h6>
+                                            <div class="appointment-client-mini">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&q=80"
+                                                    alt="Client">
+                                                <span>Michael Chen</span>
+                                            </div>
+                                            <div class="appointment-meta-mini">
+                                                <span><i class="bi bi-geo-alt"></i> Video Call</span>
+                                                <span><i class="bi bi-cash"></i> $40</span>
+                                            </div>
+                                            <div class="pending-badge">
+                                                <i class="bi bi-clock-history"></i> Pending Approval
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 3:00 PM - Available -->
+                                    <div class="time-slot empty">
+                                        <div class="time-label">03:00 PM</div>
+                                        <div class="slot-content available-slot">
+                                            <button class="add-appointment-btn">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <span>Add Appointment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 4:00 PM - Booked -->
+                                    <div class="time-slot booked">
+                                        <div class="time-label">04:00 PM</div>
+                                        <div class="slot-content appointment-slot-content confirmed">
+                                            <div class="appointment-header">
+                                                <div class="appointment-time">4:00 PM - 6:00 PM</div>
+                                                <div class="appointment-actions-mini">
+                                                    <button class="btn-mini" title="Edit"><i
+                                                            class="bi bi-pencil"></i></button>
+                                                    <button class="btn-mini" title="Cancel"><i
+                                                            class="bi bi-x-lg"></i></button>
+                                                </div>
+                                            </div>
+                                            <h6 class="appointment-title">Leadership Training Workshop</h6>
+                                            <div class="appointment-client-mini">
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&q=80"
+                                                    alt="Client">
+                                                <span>Jessica Taylor</span>
+                                            </div>
+                                            <div class="appointment-meta-mini">
+                                                <span><i class="bi bi-geo-alt"></i> Conference Room A</span>
+                                                <span><i class="bi bi-cash"></i> $100</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Time Slot 6:00 PM - Available -->
+                                    <div class="time-slot empty">
+                                        <div class="time-label">06:00 PM</div>
+                                        <div class="slot-content available-slot">
+                                            <button class="add-appointment-btn">
+                                                <i class="bi bi-plus-circle"></i>
+                                                <span>Add Appointment</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== SIDEBAR INFO ===== -->
+                <div class="col-lg-3">
+
+                    <!-- Mini Calendar -->
+                    <div class="staff-card mb-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="bi bi-calendar3 me-2"></i>Calendar
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="mini-calendar">
+                                <div class="calendar-header">
+                                    <button class="calendar-nav-btn" id="prevMonth">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </button>
+                                    <span class="calendar-month">December 2024</span>
+                                    <button class="calendar-nav-btn" id="nextMonth">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+                                <div class="calendar-weekdays">
+                                    <div class="weekday">S</div>
+                                    <div class="weekday">M</div>
+                                    <div class="weekday">T</div>
+                                    <div class="weekday">W</div>
+                                    <div class="weekday">T</div>
+                                    <div class="weekday">F</div>
+                                    <div class="weekday">S</div>
+                                </div>
+                                <div class="calendar-days">
+                                    <div class="calendar-day other-month">26</div>
+                                    <div class="calendar-day other-month">27</div>
+                                    <div class="calendar-day other-month">28</div>
+                                    <div class="calendar-day other-month">29</div>
+                                    <div class="calendar-day other-month">30</div>
+                                    <div class="calendar-day">1</div>
+                                    <div class="calendar-day">2</div>
+                                    <div class="calendar-day">3</div>
+                                    <div class="calendar-day">4</div>
+                                    <div class="calendar-day has-events">5</div>
+                                    <div class="calendar-day has-events">6</div>
+                                    <div class="calendar-day">7</div>
+                                    <div class="calendar-day">8</div>
+                                    <div class="calendar-day">9</div>
+                                    <div class="calendar-day has-events">10</div>
+                                    <div class="calendar-day">11</div>
+                                    <div class="calendar-day has-events">12</div>
+                                    <div class="calendar-day">13</div>
+                                    <div class="calendar-day">14</div>
+                                    <div class="calendar-day has-events">15</div>
+                                    <div class="calendar-day">16</div>
+                                    <div class="calendar-day">17</div>
+                                    <div class="calendar-day">18</div>
+                                    <div class="calendar-day has-events">19</div>
+                                    <div class="calendar-day has-events">20</div>
+                                    <div class="calendar-day">21</div>
+                                    <div class="calendar-day">22</div>
+                                    <div class="calendar-day">23</div>
+                                    <div class="calendar-day">24</div>
+                                    <div class="calendar-day">25</div>
+                                    <div class="calendar-day">26</div>
+                                    <div class="calendar-day">27</div>
+                                    <div class="calendar-day today">28</div>
+                                    <div class="calendar-day has-events">29</div>
+                                    <div class="calendar-day has-events">30</div>
+                                    <div class="calendar-day">31</div>
+                                    <div class="calendar-day other-month">1</div>
+                                    <div class="calendar-day other-month">2</div>
+                                    <div class="calendar-day other-month">3</div>
+                                    <div class="calendar-day other-month">4</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Availability Settings -->
+                    <div class="staff-card mb-4">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="bi bi-clock-history me-2"></i>Quick Settings
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="availability-settings">
+                                <div class="setting-item">
+                                    <span>Accept Bookings</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="acceptBookings" checked>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <span>Auto-Confirm</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="autoConfirm">
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <span>Buffer Time (15 min)</span>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="bufferTime" checked>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-outline-primary btn-sm w-100 mt-3">
+                                <i class="bi bi-gear me-2"></i>More Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Quick Actions -->
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h6 class="card-title mb-0">
+                                <i class="bi bi-lightning me-2"></i>Quick Actions
+                            </h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions-list">
+                                <button class="quick-action-item">
+                                    <i class="bi bi-calendar-plus"></i>
+                                    <span>Add Appointment</span>
+                                </button>
+                                <button class="quick-action-item">
+                                    <i class="bi bi-calendar-x"></i>
+                                    <span>Block Time Slot</span>
+                                </button>
+                                <button class="quick-action-item">
+                                    <i class="bi bi-clock"></i>
+                                    <span>Set Break Time</span>
+                                </button>
+                                <button class="quick-action-item">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                    <span>Sync Calendar</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -252,9 +711,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Staff Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/staff-schedule.js"></script>
 </body>
+
 </html>

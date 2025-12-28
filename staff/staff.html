@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Staff Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
     <link rel="stylesheet" href="assets/styles/staff.css">
 </head>
+
 <body class="staff-panel">
 
     <!-- ===== TOP HEADER BAR ===== -->
@@ -45,7 +48,8 @@
 
                 <div class="header-right">
                     <!-- Quick Actions -->
-                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal" data-bs-target="#quickAddModal">
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
                         <i class="bi bi-plus-circle"></i>
                     </button>
 
@@ -102,7 +106,8 @@
                     <!-- User Menu -->
                     <div class="dropdown">
                         <button class="staff-user-btn" data-bs-toggle="dropdown">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Staff" class="staff-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
                             <div class="staff-info">
                                 <span class="staff-name">Sarah Johnson</span>
                                 <span class="staff-role">Senior Consultant</span>
@@ -144,7 +149,7 @@
             <nav class="staff-nav">
                 <ul class="nav-list">
                     <li class="nav-item active">
-                        <a href="staff-dashboard.html" class="nav-link">
+                        <a href="staff.html" class="nav-link">
                             <i class="bi bi-speedometer2"></i>
                             <span>Dashboard</span>
                         </a>
@@ -241,9 +246,463 @@
     <!-- ===== MAIN CONTENT AREA ===== -->
     <main class="staff-main-content">
         <div class="content-wrapper">
-            
 
-            
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">Good Morning, Sarah! 👋</h1>
+                    <p class="page-subtitle">You have 8 appointments today. Let's make it productive!</p>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn btn-outline-primary">
+                        <i class="bi bi-calendar-week me-2"></i>Week View
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-plus-lg me-2"></i>Add Appointment
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== QUICK STATS ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-xl-3 col-md-6">
+                    <div class="staff-stat-card stat-today">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="bi bi-calendar-day"></i>
+                            </div>
+                            <div class="stat-badge badge-today">Today</div>
+                        </div>
+                        <div class="stat-body">
+                            <h3 class="stat-value" data-target="8">0</h3>
+                            <p class="stat-label">Appointments Today</p>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 62.5%"></div>
+                            </div>
+                            <span class="stat-detail">5 completed, 3 upcoming</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="staff-stat-card stat-week">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="bi bi-calendar-week"></i>
+                            </div>
+                            <div class="stat-badge badge-week">This Week</div>
+                        </div>
+                        <div class="stat-body">
+                            <h3 class="stat-value" data-target="32">0</h3>
+                            <p class="stat-label">Weekly Appointments</p>
+                            <div class="stat-progress">
+                                <div class="progress-bar" style="width: 78%"></div>
+                            </div>
+                            <span class="stat-detail">25 completed, 7 pending</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="staff-stat-card stat-earnings">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="bi bi-cash-coin"></i>
+                            </div>
+                            <div class="stat-badge badge-earnings">Earnings</div>
+                        </div>
+                        <div class="stat-body">
+                            <h3 class="stat-value">$<span data-target="3250">0</span></h3>
+                            <p class="stat-label">This Month</p>
+                            <div class="stat-change positive">
+                                <i class="bi bi-arrow-up"></i>
+                                <span>+15% from last month</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-md-6">
+                    <div class="staff-stat-card stat-rating">
+                        <div class="stat-header">
+                            <div class="stat-icon">
+                                <i class="bi bi-star-fill"></i>
+                            </div>
+                            <div class="stat-badge badge-rating">Rating</div>
+                        </div>
+                        <div class="stat-body">
+                            <h3 class="stat-value">4.9</h3>
+                            <p class="stat-label">Average Rating</p>
+                            <div class="star-rating">
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-fill"></i>
+                                <i class="bi bi-star-half"></i>
+                            </div>
+                            <span class="stat-detail">Based on 127 reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== MAIN CONTENT ROW ===== -->
+            <div class="row g-4">
+
+                <!-- ===== TODAY'S SCHEDULE ===== -->
+                <div class="col-lg-8">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-calendar-day me-2"></i>Today's Schedule
+                            </h5>
+                            <div class="card-actions">
+                                <button class="btn btn-sm btn-outline-secondary">
+                                    <i class="bi bi-funnel"></i>
+                                </button>
+                                <a href="staff-appointments.html" class="btn btn-sm btn-outline-primary">View All</a>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <!-- Time Slot 1 - Completed -->
+                            <div class="appointment-slot completed">
+                                <div class="slot-time">
+                                    <span class="time">09:00 AM</span>
+                                    <span class="duration">1h 30m</span>
+                                </div>
+                                <div class="slot-divider">
+                                    <div class="slot-dot"></div>
+                                    <div class="slot-line"></div>
+                                </div>
+                                <div class="slot-content">
+                                    <div class="slot-header">
+                                        <div>
+                                            <h6 class="slot-title">Business Strategy Meeting</h6>
+                                            <p class="slot-client">
+                                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=50&q=80"
+                                                    alt="Client" class="client-avatar">
+                                                <span>John Anderson</span>
+                                            </p>
+                                        </div>
+                                        <span class="slot-badge badge-completed">
+                                            <i class="bi bi-check-circle-fill"></i> Completed
+                                        </span>
+                                    </div>
+                                    <div class="slot-details">
+                                        <span><i class="bi bi-geo-alt"></i> Online Meeting</span>
+                                        <span><i class="bi bi-cash"></i> $120</span>
+                                        <span><i class="bi bi-tag"></i> Business</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Slot 2 - Upcoming -->
+                            <div class="appointment-slot upcoming">
+                                <div class="slot-time">
+                                    <span class="time">11:00 AM</span>
+                                    <span class="duration">1h</span>
+                                </div>
+                                <div class="slot-divider">
+                                    <div class="slot-dot active"></div>
+                                    <div class="slot-line"></div>
+                                </div>
+                                <div class="slot-content">
+                                    <div class="slot-header">
+                                        <div>
+                                            <h6 class="slot-title">Personal Consultation</h6>
+                                            <p class="slot-client">
+                                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=50&q=80"
+                                                    alt="Client" class="client-avatar">
+                                                <span>Emma Wilson</span>
+                                            </p>
+                                        </div>
+                                        <span class="slot-badge badge-upcoming">
+                                            <i class="bi bi-clock"></i> In 30 min
+                                        </span>
+                                    </div>
+                                    <div class="slot-details">
+                                        <span><i class="bi bi-geo-alt"></i> Room 204</span>
+                                        <span><i class="bi bi-cash"></i> $50</span>
+                                        <span><i class="bi bi-tag"></i> Consultation</span>
+                                    </div>
+                                    <div class="slot-actions">
+                                        <button class="btn btn-sm btn-primary">Start Session</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Reschedule</button>
+                                        <button class="btn btn-sm btn-outline-danger">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Slot 3 - Upcoming -->
+                            <div class="appointment-slot upcoming">
+                                <div class="slot-time">
+                                    <span class="time">02:00 PM</span>
+                                    <span class="duration">45m</span>
+                                </div>
+                                <div class="slot-divider">
+                                    <div class="slot-dot"></div>
+                                    <div class="slot-line"></div>
+                                </div>
+                                <div class="slot-content">
+                                    <div class="slot-header">
+                                        <div>
+                                            <h6 class="slot-title">Technical Support Session</h6>
+                                            <p class="slot-client">
+                                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=50&q=80"
+                                                    alt="Client" class="client-avatar">
+                                                <span>Michael Chen</span>
+                                            </p>
+                                        </div>
+                                        <span class="slot-badge badge-upcoming">
+                                            <i class="bi bi-clock"></i> In 2h 30m
+                                        </span>
+                                    </div>
+                                    <div class="slot-details">
+                                        <span><i class="bi bi-geo-alt"></i> Video Call</span>
+                                        <span><i class="bi bi-cash"></i> $40</span>
+                                        <span><i class="bi bi-tag"></i> Support</span>
+                                    </div>
+                                    <div class="slot-actions">
+                                        <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Reschedule</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Time Slot 4 - Upcoming -->
+                            <div class="appointment-slot upcoming">
+                                <div class="slot-time">
+                                    <span class="time">04:00 PM</span>
+                                    <span class="duration">2h</span>
+                                </div>
+                                <div class="slot-divider">
+                                    <div class="slot-dot"></div>
+                                </div>
+                                <div class="slot-content">
+                                    <div class="slot-header">
+                                        <div>
+                                            <h6 class="slot-title">Leadership Training Workshop</h6>
+                                            <p class="slot-client">
+                                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=50&q=80"
+                                                    alt="Client" class="client-avatar">
+                                                <span>Jessica Taylor</span>
+                                            </p>
+                                        </div>
+                                        <span class="slot-badge badge-upcoming">
+                                            <i class="bi bi-clock"></i> In 5h
+                                        </span>
+                                    </div>
+                                    <div class="slot-details">
+                                        <span><i class="bi bi-geo-alt"></i> Conference Room A</span>
+                                        <span><i class="bi bi-cash"></i> $100</span>
+                                        <span><i class="bi bi-tag"></i> Training</span>
+                                    </div>
+                                    <div class="slot-actions">
+                                        <button class="btn btn-sm btn-outline-primary">View Details</button>
+                                        <button class="btn btn-sm btn-outline-secondary">Reschedule</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ===== SIDEBAR WIDGETS ===== -->
+                <div class="col-lg-4">
+
+                    <!-- Quick Actions Widget -->
+                    <div class="staff-card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-lightning me-2"></i>Quick Actions
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="quick-actions-grid">
+                                <button class="quick-action-btn">
+                                    <i class="bi bi-plus-circle"></i>
+                                    <span>Add Appointment</span>
+                                </button>
+                                <button class="quick-action-btn">
+                                    <i class="bi bi-clock-history"></i>
+                                    <span>Set Break</span>
+                                </button>
+                                <button class="quick-action-btn">
+                                    <i class="bi bi-calendar-x"></i>
+                                    <span>Block Time</span>
+                                </button>
+                                <button class="quick-action-btn">
+                                    <i class="bi bi-people"></i>
+                                    <span>View Clients</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Requests -->
+                    <div class="staff-card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-bell me-2"></i>Pending Requests
+                            </h5>
+                            <span class="badge bg-warning">3</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="request-list">
+                                <div class="request-item">
+                                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=50&q=80"
+                                        alt="Client" class="request-avatar">
+                                    <div class="request-info">
+                                        <h6>David Martinez</h6>
+                                        <p>Tomorrow, 10:00 AM - Consultation</p>
+                                    </div>
+                                    <div class="request-actions">
+                                        <button class="btn-icon btn-success" title="Accept">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        <button class="btn-icon btn-danger" title="Decline">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="request-item">
+                                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=50&q=80"
+                                        alt="Client" class="request-avatar">
+                                    <div class="request-info">
+                                        <h6>Lisa Anderson</h6>
+                                        <p>Dec 30, 3:00 PM - Business Meeting</p>
+                                    </div>
+                                    <div class="request-actions">
+                                        <button class="btn-icon btn-success" title="Accept">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        <button class="btn-icon btn-danger" title="Decline">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="request-item">
+                                    <img src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?w=50&q=80"
+                                        alt="Client" class="request-avatar">
+                                    <div class="request-info">
+                                        <h6>Robert Smith</h6>
+                                        <p>Jan 2, 11:00 AM - Training Session</p>
+                                    </div>
+                                    <div class="request-actions">
+                                        <button class="btn-icon btn-success" title="Accept">
+                                            <i class="bi bi-check-lg"></i>
+                                        </button>
+                                        <button class="btn-icon btn-danger" title="Decline">
+                                            <i class="bi bi-x-lg"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Performance Widget -->
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-graph-up me-2"></i>This Week's Performance
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="performance-stat">
+                                <div class="perf-label">
+                                    <span>Appointments Completed</span>
+                                    <strong>25/32</strong>
+                                </div>
+                                <div class="perf-bar">
+                                    <div class="perf-fill" style="width: 78%"></div>
+                                </div>
+                            </div>
+                            <div class="performance-stat">
+                                <div class="perf-label">
+                                    <span>Client Satisfaction</span>
+                                    <strong>98%</strong>
+                                </div>
+                                <div class="perf-bar">
+                                    <div class="perf-fill" style="width: 98%"></div>
+                                </div>
+                            </div>
+                            <div class="performance-stat">
+                                <div class="perf-label">
+                                    <span>On-Time Rate</span>
+                                    <strong>95%</strong>
+                                </div>
+                                <div class="perf-bar">
+                                    <div class="perf-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div class="performance-stat">
+                                <div class="perf-label">
+                                    <span>Earning Goal</span>
+                                    <strong>$3.2K/$4K</strong>
+                                </div>
+                                <div class="perf-bar">
+                                    <div class="perf-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ===== RECENT ACTIVITY ===== -->
+            <div class="row g-4 mt-2">
+                <div class="col-12">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-activity me-2"></i>Recent Activity
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="activity-timeline">
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-success">
+                                        <i class="bi bi-check-circle"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Completed appointment</strong> with John Anderson</p>
+                                        <span class="activity-time">2 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-primary">
+                                        <i class="bi bi-calendar-plus"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>New appointment request</strong> from Emma Wilson</p>
+                                        <span class="activity-time">3 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-warning">
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Received 5-star review</strong> from Michael Chen</p>
+                                        <span class="activity-time">5 hours ago</span>
+                                    </div>
+                                </div>
+                                <div class="activity-item">
+                                    <div class="activity-icon bg-info">
+                                        <i class="bi bi-cash-coin"></i>
+                                    </div>
+                                    <div class="activity-content">
+                                        <p><strong>Payment received</strong> $120 from Business Strategy Meeting</p>
+                                        <span class="activity-time">6 hours ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -252,9 +711,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Staff Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
     <script src="assets/js/staff.js"></script>
 </body>
+
 </html>
