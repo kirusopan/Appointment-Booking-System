@@ -1,0 +1,505 @@
+/* =========================================
+   STAFF PAGE STYLES
+   ========================================= */
+
+/* ===== STAFF FILTER SECTION ===== */
+.staff-filter-section {
+    background: white;
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 76px;
+    z-index: 100;
+}
+
+/* ===== STAFF CARDS ===== */
+.staff-grid-section {
+    padding: 4rem 0;
+}
+
+.staff-item {
+    transition: var(--transition);
+}
+
+.staff-card-full {
+    background: white;
+    border-radius: 1.5rem;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: var(--transition);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-card-full:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.staff-image-wrapper {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+}
+
+.staff-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.staff-card-full:hover .staff-image-wrapper img {
+    transform: scale(1.1);
+}
+
+.staff-status-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.staff-status-badge.available {
+    background: rgba(16, 185, 129, 0.95);
+    color: white;
+}
+
+.staff-status-badge.busy {
+    background: rgba(239, 68, 68, 0.95);
+    color: white;
+}
+
+.staff-status-badge i {
+    font-size: 0.5rem;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.staff-badge-top {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    z-index: 2;
+}
+
+.staff-social {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    opacity: 0;
+    transition: var(--transition);
+}
+
+.staff-card-full:hover .staff-social {
+    opacity: 1;
+    bottom: 1.5rem;
+}
+
+.social-link {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--primary);
+    transition: var(--transition);
+    text-decoration: none;
+}
+
+.social-link:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-3px);
+}
+
+.staff-info {
+    padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.staff-info h4 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.25rem;
+}
+
+.staff-role {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.staff-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.staff-rating i {
+    color: #fbbf24;
+    font-size: 1rem;
+}
+
+.staff-rating .rating-value {
+    margin-left: 0.5rem;
+    font-weight: 700;
+    color: var(--dark);
+    font-size: 1.125rem;
+}
+
+.staff-stats {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+    border-top: 2px solid var(--light);
+    border-bottom: 2px solid var(--light);
+}
+
+.staff-stats .stat {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--gray);
+    font-size: 0.875rem;
+}
+
+.staff-stats .stat i {
+    color: var(--primary);
+    font-size: 1rem;
+}
+
+.staff-skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex: 1;
+}
+
+.skill-tag {
+    background: rgba(99, 102, 241, 0.1);
+    color: var(--primary);
+    padding: 0.4rem 0.9rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+.staff-actions {
+    display: flex;
+    flex-direction: column;
+}
+
+/* ===== LIST VIEW ===== */
+#staffGrid.list-view {
+    display: flex;
+    flex-direction: column;
+}
+
+#staffGrid.list-view .staff-item {
+    max-width: 100%;
+}
+
+#staffGrid.list-view .staff-card-full {
+    flex-direction: row;
+    max-height: 250px;
+}
+
+#staffGrid.list-view .staff-image-wrapper {
+    width: 280px;
+    min-width: 280px;
+    height: 100%;
+}
+
+#staffGrid.list-view .staff-info {
+    padding: 1.5rem 2rem;
+}
+
+#staffGrid.list-view .staff-info h4 {
+    font-size: 1.25rem;
+}
+
+#staffGrid.list-view .staff-stats {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+}
+
+#staffGrid.list-view .staff-skills {
+    margin-bottom: 1rem;
+}
+
+#staffGrid.list-view .staff-actions {
+    flex-direction: row;
+    gap: 1rem;
+}
+
+#staffGrid.list-view .staff-actions button {
+    width: auto !important;
+    margin: 0 !important;
+}
+
+#staffGrid.list-view .staff-social {
+    flex-direction: column;
+    left: auto;
+    right: 1rem;
+    transform: none;
+}
+
+#staffGrid.list-view .staff-card-full:hover .staff-social {
+    bottom: 1rem;
+    right: 1.5rem;
+}
+
+/* ===== MODAL STYLES ===== */
+.modal-content {
+    border: none;
+    border-radius: 1.5rem;
+}
+
+.modal-header {
+    padding: 2rem 2rem 1rem;
+}
+
+.modal-title {
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.modal-body {
+    padding: 1rem 2rem 2rem;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 1rem;
+    object-fit: cover;
+}
+
+.profile-info h3 {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+
+.profile-info .text-muted {
+    margin-bottom: 1rem;
+}
+
+.profile-section {
+    margin-bottom: 2rem;
+}
+
+.profile-section h5 {
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--dark);
+}
+
+.profile-section p {
+    color: var(--gray);
+    line-height: 1.7;
+}
+
+.certifications-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.certification-item {
+    background: var(--light);
+    padding: 1rem;
+    border-radius: 0.75rem;
+    text-align: center;
+}
+
+.certification-item i {
+    font-size: 2rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.certification-item h6 {
+    font-weight: 600;
+    font-size: 0.875rem;
+}
+
+/* ===== JOIN TEAM SECTION ===== */
+.join-team-section {
+    background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+    padding: 5rem 0;
+}
+
+.benefits-list {
+    list-style: none;
+    padding: 0;
+}
+
+.benefits-list li {
+    padding: 0.75rem 0;
+    font-size: 1.125rem;
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+}
+
+/* ===== FILTER ANIMATIONS ===== */
+.staff-item {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.staff-item.hide {
+    display: none;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .staff-filter-section {
+        position: relative;
+        top: 0;
+    }
+
+    #staffGrid.list-view .staff-card-full {
+        flex-direction: column;
+        max-height: none;
+    }
+
+    #staffGrid.list-view .staff-image-wrapper {
+        width: 100%;
+        height: 280px;
+    }
+
+    #staffGrid.list-view .staff-actions {
+        flex-direction: column;
+    }
+
+    #staffGrid.list-view .staff-actions button {
+        width: 100% !important;
+        margin-bottom: 0.5rem !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .staff-image-wrapper {
+        height: 280px;
+    }
+
+    .staff-info {
+        padding: 1.5rem;
+    }
+
+    .staff-info h4 {
+        font-size: 1.25rem;
+    }
+
+    .staff-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .certifications-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 576px) {
+    .staff-badge-top {
+        font-size: 0.65rem;
+        padding: 0.4rem 0.8rem;
+    }
+
+    .social-link {
+        width: 35px;
+        height: 35px;
+    }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.staff-card-full .btn {
+    position: relative;
+    overflow: hidden;
+}
+
+.staff-card-full .btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.staff-card-full .btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
+
+/* ===== LOADING SKELETON ===== */
+.staff-skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* ===== SMOOTH TRANSITIONS ===== */
+* {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}

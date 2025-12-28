@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BookEase - Appointment Booking System</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="assets/styles/style.css">
-    <link rel="stylesheet" href="assets/styles/style.css">
+    <link rel="stylesheet" href="assets/styles/services.css">
 </head>
+
 <body>
 
     <!-- Navigation -->
@@ -62,8 +65,432 @@
 
     <!-- Main Content -->
     <main>
-        
 
+        <!-- ===== PAGE HEADER ===== -->
+        <section class="page-header">
+            <div class="page-header-overlay"></div>
+            <div class="container position-relative">
+                <div class="row justify-content-center">
+                    <div class="col-lg-8 text-center" data-animate="fade-in-up">
+                        <nav aria-label="breadcrumb" class="mb-3">
+                            <ol class="breadcrumb justify-content-center">
+                                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                                <li class="breadcrumb-item active">Services</li>
+                            </ol>
+                        </nav>
+                        <h1 class="page-title mb-3">Our Services</h1>
+                        <p class="page-subtitle">Choose from our wide range of professional services tailored to meet
+                            your needs</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES FILTER ===== -->
+        <section class="services-filter-section">
+            <div class="container">
+                <div class="filter-bar" data-animate="fade-in-up">
+                    <div class="row align-items-center g-3">
+                        <div class="col-lg-6">
+                            <div class="search-box">
+                                <i class="bi bi-search"></i>
+                                <input type="text" id="serviceSearch" class="form-control"
+                                    placeholder="Search services...">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <select class="form-select" id="categoryFilter">
+                                <option value="all">All Categories</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="business">Business</option>
+                                <option value="training">Training</option>
+                                <option value="support">Support</option>
+                                <option value="wellness">Wellness</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <select class="form-select" id="priceFilter">
+                                <option value="all">All Prices</option>
+                                <option value="0-50">$0 - $50</option>
+                                <option value="50-100">$50 - $100</option>
+                                <option value="100-200">$100 - $200</option>
+                                <option value="200+">$200+</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== SERVICES GRID ===== -->
+        <section class="section services-grid-section">
+            <div class="container">
+                <div class="row g-4" id="servicesGrid">
+
+                    <!-- Service Card 1 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="consultation" data-price="50"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80"
+                                    alt="Personal Consultation">
+                                <div class="service-badge">Popular</div>
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Consultation</div>
+                                <h4>Personal Consultation</h4>
+                                <p>One-on-one professional consultation to discuss your goals and create an action plan.
+                                </p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 60 minutes session</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Personalized advice</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Follow-up email</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$50</span>
+                                        <span class="duration">/ hour</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 2 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="business" data-price="120"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
+                                    alt="Business Strategy">
+                                <div class="service-badge bg-success">New</div>
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Business</div>
+                                <h4>Business Strategy Meeting</h4>
+                                <p>Strategic planning session to accelerate your business growth and overcome
+                                    challenges.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 90 minutes session</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Strategic roadmap</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Resource materials</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$120</span>
+                                        <span class="duration">/ session</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 3 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="training" data-price="80"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&q=80"
+                                    alt="Skills Training">
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Training</div>
+                                <h4>Professional Skills Training</h4>
+                                <p>Hands-on training sessions to develop essential professional and technical skills.
+                                </p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 2 hours training</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Practice exercises</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Certificate provided</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$80</span>
+                                        <span class="duration">/ session</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 4 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="support" data-price="40"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=600&q=80"
+                                    alt="Technical Support">
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Support</div>
+                                <h4>Technical Support Session</h4>
+                                <p>Expert technical assistance to resolve issues and optimize your systems.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 45 minutes support</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Remote assistance</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Documentation</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$40</span>
+                                        <span class="duration">/ hour</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 5 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="wellness" data-price="60"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=600&q=80"
+                                    alt="Wellness Coaching">
+                                <div class="service-badge bg-info">Featured</div>
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Wellness</div>
+                                <h4>Wellness Coaching</h4>
+                                <p>Holistic wellness guidance focusing on mental, physical, and emotional health.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 60 minutes coaching</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Personalized plan</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Progress tracking</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$60</span>
+                                        <span class="duration">/ session</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 6 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="business" data-price="150"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=600&q=80"
+                                    alt="Financial Planning">
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Business</div>
+                                <h4>Financial Planning</h4>
+                                <p>Comprehensive financial planning and investment strategy consultation.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 90 minutes session</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Financial analysis</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Action plan</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$150</span>
+                                        <span class="duration">/ session</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 7 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="consultation" data-price="70"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+                                    alt="Career Guidance">
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Consultation</div>
+                                <h4>Career Guidance</h4>
+                                <p>Professional career counseling to help you achieve your professional goals.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 75 minutes session</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Career assessment</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Resume review</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$70</span>
+                                        <span class="duration">/ session</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 8 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="training" data-price="100"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=600&q=80"
+                                    alt="Leadership Training">
+                                <div class="service-badge bg-warning">Premium</div>
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Training</div>
+                                <h4>Leadership Development</h4>
+                                <p>Advanced leadership training to enhance management and decision-making skills.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 2 hours workshop</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Case studies</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Certificate of completion</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$100</span>
+                                        <span class="duration">/ workshop</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Service Card 9 -->
+                    <div class="col-lg-4 col-md-6 service-item" data-category="support" data-price="35"
+                        data-animate="fade-in-up">
+                        <div class="service-card-full">
+                            <div class="service-image-full">
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=600&q=80"
+                                    alt="Quick Consultation">
+                                <div class="service-overlay">
+                                    <a href="booking.html" class="btn btn-light btn-sm">Quick Book</a>
+                                </div>
+                            </div>
+                            <div class="service-content-full">
+                                <div class="service-category">Support</div>
+                                <h4>Quick Consultation</h4>
+                                <p>Short consultation session for quick questions and immediate guidance.</p>
+                                <ul class="service-features">
+                                    <li><i class="bi bi-check-circle-fill"></i> 30 minutes call</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Instant answers</li>
+                                    <li><i class="bi bi-check-circle-fill"></i> Email summary</li>
+                                </ul>
+                                <div class="service-footer">
+                                    <div class="service-price-full">
+                                        <span class="price">$35</span>
+                                        <span class="duration">/ 30 min</span>
+                                    </div>
+                                    <a href="booking.html" class="btn btn-primary">Book Now</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- No Results Message -->
+                <div id="noResults" class="text-center py-5" style="display: none;">
+                    <i class="bi bi-search fs-1 text-muted mb-3"></i>
+                    <h4>No Services Found</h4>
+                    <p class="text-muted">Try adjusting your filters or search terms</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== WHY CHOOSE US ===== -->
+        <section class="section why-choose-section bg-light">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 mb-4 mb-lg-0" data-animate="slide-in-left">
+                        <img src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=800&q=80"
+                            alt="Why Choose Us" class="img-fluid rounded-custom shadow-custom">
+                    </div>
+                    <div class="col-lg-6" data-animate="slide-in-right">
+                        <h2 class="section-title mb-4">Why Choose Our Services?</h2>
+                        <p class="text-muted mb-4">We provide exceptional service quality with a commitment to your
+                            success.</p>
+                        <div class="why-choose-list">
+                            <div class="why-choose-item">
+                                <div class="why-icon bg-gradient-primary">
+                                    <i class="bi bi-award"></i>
+                                </div>
+                                <div>
+                                    <h5>Certified Professionals</h5>
+                                    <p class="text-muted mb-0">All our service providers are certified experts with
+                                        years of experience.</p>
+                                </div>
+                            </div>
+                            <div class="why-choose-item">
+                                <div class="why-icon bg-gradient-secondary">
+                                    <i class="bi bi-clock-history"></i>
+                                </div>
+                                <div>
+                                    <h5>Flexible Scheduling</h5>
+                                    <p class="text-muted mb-0">Book appointments at times that work best for your
+                                        schedule.</p>
+                                </div>
+                            </div>
+                            <div class="why-choose-item">
+                                <div class="why-icon"
+                                    style="background: linear-gradient(135deg, #10b981 0%, #059669 100%);">
+                                    <i class="bi bi-shield-check"></i>
+                                </div>
+                                <div>
+                                    <h5>Satisfaction Guaranteed</h5>
+                                    <p class="text-muted mb-0">100% satisfaction guarantee or your money back, no
+                                        questions asked.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===== CTA BANNER ===== -->
+        <section class="cta-banner">
+            <div class="container">
+                <div class="row align-items-center" data-animate="fade-in-up">
+                    <div class="col-lg-8">
+                        <h3 class="text-white mb-2">Can't Find What You're Looking For?</h3>
+                        <p class="text-white-50 mb-0">Contact us and we'll create a custom service package just for you.
+                        </p>
+                    </div>
+                    <div class="col-lg-4 text-lg-end mt-3 mt-lg-0">
+                        <a href="contact.html" class="btn btn-light btn-lg">
+                            <i class="bi bi-chat-dots me-2"></i>Contact Us
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
 
     </main>
 
@@ -117,9 +544,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Custom JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/services.js"></script>
 </body>
+
 </html>
