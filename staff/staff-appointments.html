@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Staff Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
-    <link rel="stylesheet" href="assets/styles/staff.css">
+    <link rel="stylesheet" href="assets/styles/staff-schedule.css">
+    <link rel="stylesheet" href="assets/styles/staff-appointments.css">
 </head>
+
 <body class="staff-panel">
 
     <!-- ===== TOP HEADER BAR ===== -->
@@ -45,7 +49,8 @@
 
                 <div class="header-right">
                     <!-- Quick Actions -->
-                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal" data-bs-target="#quickAddModal">
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
                         <i class="bi bi-plus-circle"></i>
                     </button>
 
@@ -102,7 +107,8 @@
                     <!-- User Menu -->
                     <div class="dropdown">
                         <button class="staff-user-btn" data-bs-toggle="dropdown">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Staff" class="staff-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
                             <div class="staff-info">
                                 <span class="staff-name">Sarah Johnson</span>
                                 <span class="staff-role">Senior Consultant</span>
@@ -241,9 +247,545 @@
     <!-- ===== MAIN CONTENT AREA ===== -->
     <main class="staff-main-content">
         <div class="content-wrapper">
-            
 
-            
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">My Appointments</h1>
+                    <p class="page-subtitle">View and manage all your bookings</p>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn btn-outline-secondary" id="exportAppointmentsBtn">
+                        <i class="bi bi-download me-2"></i>Export
+                    </button>
+                    <button class="btn btn-primary" id="addNewAppointmentBtn">
+                        <i class="bi bi-plus-lg me-2"></i>New Appointment
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== QUICK STATS ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="appointments-stat-card stat-all">
+                        <div class="stat-icon bg-primary">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h4>156</h4>
+                            <p>Total Appointments</p>
+                            <span class="stat-period">All Time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="appointments-stat-card stat-upcoming">
+                        <div class="stat-icon bg-success">
+                            <i class="bi bi-clock"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h4>12</h4>
+                            <p>Upcoming</p>
+                            <span class="stat-period">Next 7 days</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="appointments-stat-card stat-pending">
+                        <div class="stat-icon bg-warning">
+                            <i class="bi bi-hourglass-split"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h4>5</h4>
+                            <p>Pending Approval</p>
+                            <span class="stat-period">Action Required</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="appointments-stat-card stat-completed">
+                        <div class="stat-icon bg-info">
+                            <i class="bi bi-check-circle"></i>
+                        </div>
+                        <div class="stat-details">
+                            <h4>139</h4>
+                            <p>Completed</p>
+                            <span class="stat-period">This Month: 21</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== FILTERS & SEARCH ===== -->
+            <div class="staff-card mb-4">
+                <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">Search</label>
+                            <div class="search-input-group">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control" placeholder="Search client name..."
+                                    id="searchAppointments">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Status</label>
+                            <select class="form-select" id="statusFilterAppointments">
+                                <option value="all">All Status</option>
+                                <option value="upcoming">Upcoming</option>
+                                <option value="pending">Pending</option>
+                                <option value="confirmed">Confirmed</option>
+                                <option value="completed">Completed</option>
+                                <option value="cancelled">Cancelled</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Service</label>
+                            <select class="form-select" id="serviceFilterAppointments">
+                                <option value="all">All Services</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="business">Business</option>
+                                <option value="training">Training</option>
+                                <option value="support">Support</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Date Range</label>
+                            <select class="form-select" id="dateRangeFilter">
+                                <option value="all">All Time</option>
+                                <option value="today">Today</option>
+                                <option value="tomorrow">Tomorrow</option>
+                                <option value="week">This Week</option>
+                                <option value="month" selected>This Month</option>
+                                <option value="custom">Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">Sort By</label>
+                            <select class="form-select" id="sortByFilter">
+                                <option value="date-asc">Date: Earliest First</option>
+                                <option value="date-desc">Date: Latest First</option>
+                                <option value="client">Client Name</option>
+                                <option value="price">Price</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-actions mt-3">
+                        <button class="btn btn-sm btn-outline-primary" id="applyFiltersBtn">
+                            <i class="bi bi-funnel me-2"></i>Apply Filters
+                        </button>
+                        <button class="btn btn-sm btn-outline-secondary" id="clearFiltersBtn">
+                            <i class="bi bi-x-circle me-2"></i>Clear All
+                        </button>
+                        <span class="results-count ms-3 text-muted">Showing <strong>18</strong> appointments</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== APPOINTMENTS LIST ===== -->
+            <div class="staff-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="bi bi-list-ul me-2"></i>Appointments List
+                    </h5>
+                    <div class="view-options">
+                        <button class="view-option-btn active" data-view="list" title="List View">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                        <button class="view-option-btn" data-view="grid" title="Grid View">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body p-0">
+                    <div class="appointments-list" id="appointmentsList">
+
+                        <!-- Appointment Item 1 - Upcoming -->
+                        <div class="appointment-list-item upcoming" data-status="upcoming" data-service="business"
+                            data-date="2024-12-28">
+                            <div class="appointment-checkbox">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            <div class="appointment-date-col">
+                                <div class="date-badge upcoming-badge">
+                                    <span class="day">28</span>
+                                    <span class="month">DEC</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="time">10:00 AM</span>
+                                    <span class="duration">1h 30m</span>
+                                </div>
+                            </div>
+                            <div class="appointment-client-col">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&q=80"
+                                    alt="Client" class="client-avatar-lg">
+                                <div class="client-info">
+                                    <h6 class="client-name">John Anderson</h6>
+                                    <p class="client-email">john.anderson@email.com</p>
+                                    <div class="client-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-service-col">
+                                <h6 class="service-name">Business Strategy Meeting</h6>
+                                <div class="service-details">
+                                    <span><i class="bi bi-geo-alt"></i> Online Meeting</span>
+                                    <span><i class="bi bi-tag"></i> Business</span>
+                                </div>
+                            </div>
+                            <div class="appointment-price-col">
+                                <div class="price-amount">$120</div>
+                                <span class="payment-status paid">Paid</span>
+                            </div>
+                            <div class="appointment-status-col">
+                                <span class="status-badge badge-confirmed">
+                                    <i class="bi bi-check-circle"></i> Confirmed
+                                </span>
+                            </div>
+                            <div class="appointment-actions-col">
+                                <button class="action-btn btn-view" title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="action-btn btn-edit" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="action-btn btn-start" title="Start Session">
+                                    <i class="bi bi-play-circle"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="action-btn btn-more" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-calendar-event me-2"></i>Reschedule</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-chat-dots me-2"></i>Message Client</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2"></i>Call
+                                                Client</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-x-circle me-2"></i>Cancel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appointment Item 2 - Pending -->
+                        <div class="appointment-list-item pending" data-status="pending" data-service="consultation"
+                            data-date="2024-12-29">
+                            <div class="appointment-checkbox">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            <div class="appointment-date-col">
+                                <div class="date-badge pending-badge">
+                                    <span class="day">29</span>
+                                    <span class="month">DEC</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="time">02:00 PM</span>
+                                    <span class="duration">1h</span>
+                                </div>
+                            </div>
+                            <div class="appointment-client-col">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=60&q=80"
+                                    alt="Client" class="client-avatar-lg">
+                                <div class="client-info">
+                                    <h6 class="client-name">Emma Wilson</h6>
+                                    <p class="client-email">emma.wilson@email.com</p>
+                                    <div class="client-rating">
+                                        <span class="text-muted small">New Client</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-service-col">
+                                <h6 class="service-name">Personal Consultation</h6>
+                                <div class="service-details">
+                                    <span><i class="bi bi-geo-alt"></i> Room 204</span>
+                                    <span><i class="bi bi-tag"></i> Consultation</span>
+                                </div>
+                            </div>
+                            <div class="appointment-price-col">
+                                <div class="price-amount">$50</div>
+                                <span class="payment-status pending-payment">Pending</span>
+                            </div>
+                            <div class="appointment-status-col">
+                                <span class="status-badge badge-pending">
+                                    <i class="bi bi-clock"></i> Pending
+                                </span>
+                            </div>
+                            <div class="appointment-actions-col">
+                                <button class="action-btn btn-accept" title="Accept">
+                                    <i class="bi bi-check-lg"></i>
+                                </button>
+                                <button class="action-btn btn-decline" title="Decline">
+                                    <i class="bi bi-x-lg"></i>
+                                </button>
+                                <button class="action-btn btn-view" title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="action-btn btn-more" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-calendar-event me-2"></i>Suggest New Time</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-chat-dots me-2"></i>Message Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appointment Item 3 - Completed -->
+                        <div class="appointment-list-item completed" data-status="completed" data-service="training"
+                            data-date="2024-12-20">
+                            <div class="appointment-checkbox">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            <div class="appointment-date-col">
+                                <div class="date-badge completed-badge">
+                                    <span class="day">20</span>
+                                    <span class="month">DEC</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="time">09:00 AM</span>
+                                    <span class="duration">2h</span>
+                                </div>
+                            </div>
+                            <div class="appointment-client-col">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&q=80"
+                                    alt="Client" class="client-avatar-lg">
+                                <div class="client-info">
+                                    <h6 class="client-name">Michael Chen</h6>
+                                    <p class="client-email">michael.chen@email.com</p>
+                                    <div class="client-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-service-col">
+                                <h6 class="service-name">Professional Skills Training</h6>
+                                <div class="service-details">
+                                    <span><i class="bi bi-geo-alt"></i> Training Center</span>
+                                    <span><i class="bi bi-tag"></i> Training</span>
+                                </div>
+                            </div>
+                            <div class="appointment-price-col">
+                                <div class="price-amount">$80</div>
+                                <span class="payment-status paid">Paid</span>
+                            </div>
+                            <div class="appointment-status-col">
+                                <span class="status-badge badge-completed">
+                                    <i class="bi bi-check-circle-fill"></i> Completed
+                                </span>
+                            </div>
+                            <div class="appointment-actions-col">
+                                <button class="action-btn btn-view" title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="action-btn btn-invoice" title="View Invoice">
+                                    <i class="bi bi-receipt"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="action-btn btn-more" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-arrow-repeat me-2"></i>Rebook</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-star me-2"></i>Leave
+                                                Review</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-chat-dots me-2"></i>Message Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Appointment Item 4 - Cancelled -->
+                        <div class="appointment-list-item cancelled" data-status="cancelled" data-service="support"
+                            data-date="2024-12-18">
+                            <div class="appointment-checkbox">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            <div class="appointment-date-col">
+                                <div class="date-badge cancelled-badge">
+                                    <span class="day">18</span>
+                                    <span class="month">DEC</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="time">03:00 PM</span>
+                                    <span class="duration">45m</span>
+                                </div>
+                            </div>
+                            <div class="appointment-client-col">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=60&q=80"
+                                    alt="Client" class="client-avatar-lg">
+                                <div class="client-info">
+                                    <h6 class="client-name">Jessica Taylor</h6>
+                                    <p class="client-email">jessica.taylor@email.com</p>
+                                    <div class="client-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-service-col">
+                                <h6 class="service-name">Technical Support Session</h6>
+                                <div class="service-details">
+                                    <span><i class="bi bi-geo-alt"></i> Video Call</span>
+                                    <span><i class="bi bi-tag"></i> Support</span>
+                                </div>
+                                <div class="cancellation-note">
+                                    <i class="bi bi-info-circle"></i> Cancelled by client - Rescheduled
+                                </div>
+                            </div>
+                            <div class="appointment-price-col">
+                                <div class="price-amount">$40</div>
+                                <span class="payment-status refunded">Refunded</span>
+                            </div>
+                            <div class="appointment-status-col">
+                                <span class="status-badge badge-cancelled">
+                                    <i class="bi bi-x-circle"></i> Cancelled
+                                </span>
+                            </div>
+                            <div class="appointment-actions-col">
+                                <button class="action-btn btn-view" title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="action-btn btn-rebook" title="Rebook">
+                                    <i class="bi bi-arrow-repeat"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- More appointment items... -->
+                        <div class="appointment-list-item upcoming" data-status="upcoming" data-service="business"
+                            data-date="2024-12-30">
+                            <div class="appointment-checkbox">
+                                <input type="checkbox" class="form-check-input">
+                            </div>
+                            <div class="appointment-date-col">
+                                <div class="date-badge upcoming-badge">
+                                    <span class="day">30</span>
+                                    <span class="month">DEC</span>
+                                </div>
+                                <div class="time-info">
+                                    <span class="time">11:00 AM</span>
+                                    <span class="duration">1h 30m</span>
+                                </div>
+                            </div>
+                            <div class="appointment-client-col">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=60&q=80"
+                                    alt="Client" class="client-avatar-lg">
+                                <div class="client-info">
+                                    <h6 class="client-name">Sarah Miller</h6>
+                                    <p class="client-email">sarah.miller@email.com</p>
+                                    <div class="client-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="appointment-service-col">
+                                <h6 class="service-name">Financial Planning</h6>
+                                <div class="service-details">
+                                    <span><i class="bi bi-geo-alt"></i> Office Meeting</span>
+                                    <span><i class="bi bi-tag"></i> Business</span>
+                                </div>
+                            </div>
+                            <div class="appointment-price-col">
+                                <div class="price-amount">$150</div>
+                                <span class="payment-status paid">Paid</span>
+                            </div>
+                            <div class="appointment-status-col">
+                                <span class="status-badge badge-confirmed">
+                                    <i class="bi bi-check-circle"></i> Confirmed
+                                </span>
+                            </div>
+                            <div class="appointment-actions-col">
+                                <button class="action-btn btn-view" title="View Details">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="action-btn btn-edit" title="Edit">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
+                                <button class="action-btn btn-start" title="Start Session">
+                                    <i class="bi bi-play-circle"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="action-btn btn-more" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-calendar-event me-2"></i>Reschedule</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-chat-dots me-2"></i>Message Client</a></li>
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-telephone me-2"></i>Call
+                                                Client</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-x-circle me-2"></i>Cancel</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- No Results -->
+                    <div class="empty-results" id="emptyResults" style="display: none;">
+                        <i class="bi bi-search"></i>
+                        <h5>No Appointments Found</h5>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn btn-primary" id="clearFiltersEmpty">Clear Filters</button>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="card-footer">
+                        <div class="pagination-wrapper">
+                            <div class="pagination-info">
+                                Showing <strong>1-10</strong> of <strong>18</strong> appointments
+                            </div>
+                            <nav>
+                                <ul class="pagination mb-0">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -252,9 +794,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Staff Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/staff-appointments.js"></script>
 </body>
+
 </html>
