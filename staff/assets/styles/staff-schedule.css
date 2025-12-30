@@ -1,6 +1,64 @@
-/* =========================================
+/* ===== STAFF CARD ===== */
+.staff-card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+
+.staff-card .card-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid var(--light);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+}
+
+.staff-card .card-title {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+.staff-card .card-body {
+    padding: 1.5rem;
+    background: white;
+}/* =========================================
    STAFF SCHEDULE PAGE STYLES
    ========================================= */
+
+/* ===== PAGE HEADER OVERRIDE ===== */
+.staff-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.page-header-left .page-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin: 0 0 0.5rem 0;
+}
+
+.page-header-left .page-subtitle {
+    color: var(--gray);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.page-header-right {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
 
 /* ===== SCHEDULE CONTROLS ===== */
 .schedule-controls {
