@@ -1,25 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Staff Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
-    <link rel="stylesheet" href="assets/styles/staff.css">
+    <link rel="stylesheet" href="assets/styles/staff-clients.css">
 </head>
+
 <body class="staff-panel">
 
     <!-- ===== TOP HEADER BAR ===== -->
@@ -45,7 +48,8 @@
 
                 <div class="header-right">
                     <!-- Quick Actions -->
-                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal" data-bs-target="#quickAddModal">
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
                         <i class="bi bi-plus-circle"></i>
                     </button>
 
@@ -102,7 +106,8 @@
                     <!-- User Menu -->
                     <div class="dropdown">
                         <button class="staff-user-btn" data-bs-toggle="dropdown">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Staff" class="staff-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
                             <div class="staff-info">
                                 <span class="staff-name">Sarah Johnson</span>
                                 <span class="staff-role">Senior Consultant</span>
@@ -138,7 +143,6 @@
         </div>
     </header>
 
-    <!-- ===== SIDEBAR NAVIGATION ===== -->
     <aside class="staff-sidebar" id="staffSidebar">
         <div class="sidebar-content">
             <nav class="staff-nav">
@@ -241,9 +245,621 @@
     <!-- ===== MAIN CONTENT AREA ===== -->
     <main class="staff-main-content">
         <div class="content-wrapper">
-            
 
-            
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">My Clients</h1>
+                    <p class="page-subtitle">Manage your client relationships and history</p>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn btn-outline-secondary" id="exportClientsBtn">
+                        <i class="bi bi-download me-2"></i>Export
+                    </button>
+                    <button class="btn btn-outline-primary" id="importClientsBtn">
+                        <i class="bi bi-upload me-2"></i>Import
+                    </button>
+                    <button class="btn btn-primary" id="addClientBtn">
+                        <i class="bi bi-person-plus me-2"></i>Add Client
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== CLIENTS STATS ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="client-stat-card">
+                        <div class="stat-icon bg-primary">
+                            <i class="bi bi-people"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>248</h4>
+                            <p>Total Clients</p>
+                            <span class="stat-growth positive">
+                                <i class="bi bi-arrow-up"></i> +12 this month
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="client-stat-card">
+                        <div class="stat-icon bg-success">
+                            <i class="bi bi-star"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>4.8</h4>
+                            <p>Avg Rating</p>
+                            <span class="stat-growth positive">
+                                <i class="bi bi-arrow-up"></i> +0.2 improvement
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="client-stat-card">
+                        <div class="stat-icon bg-warning">
+                            <i class="bi bi-clock-history"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>89</h4>
+                            <p>Active This Month</p>
+                            <span class="stat-growth">
+                                <i class="bi bi-dash"></i> Same as last month
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="client-stat-card">
+                        <div class="stat-icon bg-info">
+                            <i class="bi bi-person-plus"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h4>23</h4>
+                            <p>New Clients</p>
+                            <span class="stat-growth positive">
+                                <i class="bi bi-arrow-up"></i> Last 30 days
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== FILTERS & SEARCH ===== -->
+            <div class="staff-card mb-4">
+                <div class="card-body">
+                    <div class="row g-3 align-items-end">
+                        <div class="col-lg-4 col-md-6">
+                            <label class="form-label small mb-1">Search Clients</label>
+                            <div class="search-input-group">
+                                <i class="bi bi-search"></i>
+                                <input type="text" class="form-control" placeholder="Search by name, email, or phone..."
+                                    id="searchClients">
+                            </div>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Status</label>
+                            <select class="form-select" id="statusFilterClients">
+                                <option value="all">All Status</option>
+                                <option value="active">Active</option>
+                                <option value="inactive">Inactive</option>
+                                <option value="new">New</option>
+                                <option value="vip">VIP</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Rating</label>
+                            <select class="form-select" id="ratingFilter">
+                                <option value="all">All Ratings</option>
+                                <option value="5">⭐⭐⭐⭐⭐ (5 stars)</option>
+                                <option value="4">⭐⭐⭐⭐ (4+ stars)</option>
+                                <option value="3">⭐⭐⭐ (3+ stars)</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <label class="form-label small mb-1">Sort By</label>
+                            <select class="form-select" id="sortClients">
+                                <option value="name">Name (A-Z)</option>
+                                <option value="recent">Most Recent</option>
+                                <option value="appointments">Most Appointments</option>
+                                <option value="revenue">Highest Revenue</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-2 col-md-6">
+                            <button class="btn btn-outline-secondary w-100" id="clearFiltersClients">
+                                <i class="bi bi-x-circle me-2"></i>Clear
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CLIENTS LIST ===== -->
+            <div class="staff-card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        <i class="bi bi-people me-2"></i>Clients List
+                    </h5>
+                    <div class="view-options">
+                        <button class="view-option-btn active" data-view="grid" title="Grid View">
+                            <i class="bi bi-grid-3x3-gap"></i>
+                        </button>
+                        <button class="view-option-btn" data-view="list" title="List View">
+                            <i class="bi bi-list-ul"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="clients-grid" id="clientsGrid">
+
+                        <!-- Client Card 1 -->
+                        <div class="client-card" data-status="active" data-rating="5">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-success">Active</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">John Anderson</h5>
+                                <p class="client-email">john.anderson@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 123-4567
+                                </p>
+                                <div class="client-rating-display">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="rating-count">(12 reviews)</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>24 Appointments</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$2,850</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: Jan 2023
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: 2 days ago
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary" title="View Profile">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" title="Book Appointment">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary" title="Message">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Card 2 - VIP -->
+                        <div class="client-card" data-status="vip" data-rating="5">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-warning">VIP</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">Emma Wilson</h5>
+                                <p class="client-email">emma.wilson@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 234-5678
+                                </p>
+                                <div class="client-rating-display">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="rating-count">(18 reviews)</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>42 Appointments</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$5,240</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: Mar 2022
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: Today
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Card 3 - New -->
+                        <div class="client-card" data-status="new" data-rating="0">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-info">New</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">Michael Chen</h5>
+                                <p class="client-email">michael.chen@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 345-6789
+                                </p>
+                                <div class="client-rating-display">
+                                    <span class="text-muted small">No reviews yet</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>1 Appointment</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$80</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: Dec 2024
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: 1 week ago
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Card 4 -->
+                        <div class="client-card" data-status="active" data-rating="4">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-success">Active</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">Jessica Taylor</h5>
+                                <p class="client-email">jessica.taylor@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 456-7890
+                                </p>
+                                <div class="client-rating-display">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="rating-count">(8 reviews)</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>15 Appointments</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$1,680</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: Jun 2023
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: 5 days ago
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Card 5 - Inactive -->
+                        <div class="client-card" data-status="inactive" data-rating="3">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-secondary">Inactive</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">Sarah Miller</h5>
+                                <p class="client-email">sarah.miller@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 567-8901
+                                </p>
+                                <div class="client-rating-display">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star"></i>
+                                    <i class="bi bi-star"></i>
+                                    <span class="rating-count">(3 reviews)</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>6 Appointments</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$520</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: Feb 2023
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: 3 months ago
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Client Card 6 -->
+                        <div class="client-card" data-status="active" data-rating="5">
+                            <div class="client-card-header">
+                                <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80"
+                                    alt="Client" class="client-photo">
+                                <div class="client-badges">
+                                    <span class="badge bg-success">Active</span>
+                                </div>
+                            </div>
+                            <div class="client-card-body">
+                                <h5 class="client-name">David Martinez</h5>
+                                <p class="client-email">david.martinez@email.com</p>
+                                <p class="client-phone">
+                                    <i class="bi bi-telephone"></i> +1 (555) 678-9012
+                                </p>
+                                <div class="client-rating-display">
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <i class="bi bi-star-fill"></i>
+                                    <span class="rating-count">(10 reviews)</span>
+                                </div>
+                                <div class="client-stats-row">
+                                    <div class="stat-item">
+                                        <i class="bi bi-calendar-check"></i>
+                                        <span>19 Appointments</span>
+                                    </div>
+                                    <div class="stat-item">
+                                        <i class="bi bi-currency-dollar"></i>
+                                        <span>$2,140</span>
+                                    </div>
+                                </div>
+                                <div class="client-meta">
+                                    <span class="client-joined">
+                                        <i class="bi bi-calendar-plus"></i> Joined: May 2023
+                                    </span>
+                                    <span class="client-last-visit">
+                                        <i class="bi bi-clock"></i> Last: Yesterday
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="client-card-footer">
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-eye"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </button>
+                                <button class="btn btn-sm btn-outline-primary">
+                                    <i class="bi bi-chat-dots"></i>
+                                </button>
+                                <div class="dropdown">
+                                    <button class="btn btn-sm btn-outline-secondary" data-bs-toggle="dropdown">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-end">
+                                        <li><a class="dropdown-item" href="#"><i class="bi bi-pencil me-2"></i>Edit
+                                                Details</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-clock-history me-2"></i>View History</a></li>
+                                        <li><a class="dropdown-item" href="#"><i
+                                                    class="bi bi-file-text me-2"></i>Generate Report</a></li>
+                                        <li>
+                                            <hr class="dropdown-divider">
+                                        </li>
+                                        <li><a class="dropdown-item text-danger" href="#"><i
+                                                    class="bi bi-trash me-2"></i>Delete Client</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <!-- Empty State -->
+                    <div class="empty-results" id="emptyClientsResults" style="display: none;">
+                        <i class="bi bi-person-x"></i>
+                        <h5>No Clients Found</h5>
+                        <p>Try adjusting your filters or search terms</p>
+                        <button class="btn btn-primary" id="clearFiltersEmpty">Clear Filters</button>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <div class="card-footer">
+                    <div class="pagination-wrapper">
+                        <div class="pagination-info">
+                            Showing <strong>1-6</strong> of <strong>248</strong> clients
+                        </div>
+                        <nav>
+                            <ul class="pagination mb-0">
+                                <li class="page-item disabled">
+                                    <a class="page-link" href="#"><i class="bi bi-chevron-left"></i></a>
+                                </li>
+                                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#"><i class="bi bi-chevron-right"></i></a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -252,9 +868,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Staff Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/staff-clients.js"></script>
 </body>
+
 </html>
