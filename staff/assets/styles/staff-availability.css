@@ -1,0 +1,212 @@
+/* Staff Availability Styles */
+
+.status-toggle-inline {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.status-btn-inline {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid var(--light);
+    background: white;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.8rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.4rem;
+}
+
+.status-btn-inline:hover {
+    border-color: var(--gray-light);
+}
+
+.status-btn-inline.active {
+    border-color: var(--success);
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.status-btn-inline[data-status="busy"].active {
+    border-color: var(--warning);
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--warning);
+}
+
+.status-btn-inline[data-status="offline"].active {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.day-schedule-item {
+    padding: 1.5rem;
+    background: var(--light);
+    border-radius: 1rem;
+    margin-bottom: 1rem;
+    transition: var(--transition);
+}
+
+.day-schedule-item:hover {
+    background: var(--gray-light);
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.day-toggle {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.day-toggle .form-check-input {
+    width: 1.5rem;
+    height: 1.5rem;
+    cursor: pointer;
+}
+
+.day-label {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    margin: 0;
+}
+
+.day-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--dark);
+}
+
+.day-status {
+    padding: 0.35rem 0.75rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.day-status.available {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--success);
+}
+
+.day-status.unavailable {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--danger);
+}
+
+.time-slots {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.time-slot {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 0.75rem;
+}
+
+.time-inputs {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.time-separator {
+    color: var(--gray);
+    font-weight: 600;
+}
+
+.time-inputs .form-control {
+    flex: 1;
+}
+
+.setting-item {
+    padding: 1.25rem;
+    background: var(--light);
+    border-radius: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.setting-item:last-child {
+    margin-bottom: 0;
+}
+
+.setting-info h6 {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+.days-off-list, .break-times-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.day-off-item, .break-time-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--light);
+    border-radius: 0.75rem;
+    transition: var(--transition);
+}
+
+.day-off-item:hover, .break-time-item:hover {
+    background: var(--gray-light);
+}
+
+.day-off-info h6, .break-time-info h6 {
+    font-weight: 700;
+    font-size: 0.95rem;
+    margin-bottom: 0.25rem;
+}
+
+@media (max-width: 991px) {
+    .time-inputs {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .time-separator {
+        display: none;
+    }
+    
+    .status-toggle-inline {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 576px) {
+    .day-header {
+        flex-direction: column;
+        align-items: start;
+        gap: 1rem;
+    }
+    
+    .time-slot {
+        flex-direction: column;
+    }
+    
+    .time-inputs .form-control {
+        width: 100%;
+    }
+}
