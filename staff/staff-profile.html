@@ -1,25 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Staff Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Staff Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
     <link rel="stylesheet" href="assets/styles/staff.css">
+    <link rel="stylesheet" href="assets/styles/staff-profile.css">
 </head>
+
 <body class="staff-panel">
 
     <!-- ===== TOP HEADER BAR ===== -->
@@ -45,7 +49,8 @@
 
                 <div class="header-right">
                     <!-- Quick Actions -->
-                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal" data-bs-target="#quickAddModal">
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
                         <i class="bi bi-plus-circle"></i>
                     </button>
 
@@ -102,7 +107,8 @@
                     <!-- User Menu -->
                     <div class="dropdown">
                         <button class="staff-user-btn" data-bs-toggle="dropdown">
-                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80" alt="Staff" class="staff-avatar">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
                             <div class="staff-info">
                                 <span class="staff-name">Sarah Johnson</span>
                                 <span class="staff-role">Senior Consultant</span>
@@ -241,9 +247,594 @@
     <!-- ===== MAIN CONTENT AREA ===== -->
     <main class="staff-main-content">
         <div class="content-wrapper">
-            
 
-            
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">Profile Settings</h1>
+                    <p class="page-subtitle">Manage your professional profile and account information</p>
+                </div>
+            </div>
+
+            <!-- ===== PROFILE OVERVIEW ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-12">
+                    <div class="staff-card profile-overview-card">
+                        <div class="profile-banner">
+                            <button class="btn btn-light btn-sm change-banner-btn">
+                                <i class="bi bi-camera"></i> Change Banner
+                            </button>
+                        </div>
+                        <div class="profile-overview-content">
+                            <div class="profile-avatar-section">
+                                <div class="profile-avatar-wrapper">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&q=80"
+                                        alt="Profile" class="profile-avatar-large" id="staffProfileAvatar">
+                                    <button class="avatar-upload-btn" id="changeAvatarBtn">
+                                        <i class="bi bi-camera-fill"></i>
+                                    </button>
+                                    <input type="file" id="avatarInput" accept="image/*" style="display: none;">
+                                </div>
+                            </div>
+                            <div class="profile-overview-info">
+                                <h2 class="profile-name">Sarah Johnson</h2>
+                                <p class="profile-role">Senior Consultant</p>
+                                <div class="profile-meta">
+                                    <span><i class="bi bi-briefcase"></i> 5 years experience</span>
+                                    <span><i class="bi bi-star-fill"></i> 4.9 Rating</span>
+                                    <span><i class="bi bi-calendar-check"></i> 500+ Appointments</span>
+                                    <span><i class="bi bi-geo-alt"></i> New York, USA</span>
+                                </div>
+                            </div>
+                            <div class="profile-actions">
+                                <button class="btn btn-outline-primary">
+                                    <i class="bi bi-eye"></i> View Public Profile
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="bi bi-share"></i> Share Profile
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== TABS NAVIGATION ===== -->
+            <div class="profile-tabs mb-4">
+                <button class="profile-tab active" data-tab="personal">
+                    <i class="bi bi-person"></i> Personal Info
+                </button>
+                <button class="profile-tab" data-tab="professional">
+                    <i class="bi bi-briefcase"></i> Professional
+                </button>
+                <button class="profile-tab" data-tab="services">
+                    <i class="bi bi-grid"></i> Services
+                </button>
+                <button class="profile-tab" data-tab="portfolio">
+                    <i class="bi bi-images"></i> Portfolio
+                </button>
+                <button class="profile-tab" data-tab="account">
+                    <i class="bi bi-gear"></i> Account
+                </button>
+                <button class="profile-tab" data-tab="security">
+                    <i class="bi bi-shield-check"></i> Security
+                </button>
+            </div>
+
+            <!-- ===== TAB CONTENT ===== -->
+
+            <!-- Personal Info Tab -->
+            <div class="tab-content active" id="personalTab">
+                <div class="staff-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Personal Information</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="personalInfoForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" value="Sarah" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" value="Johnson" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" value="sarah@bookease.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" value="+1 234 567 8900" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Date of Birth</label>
+                                    <input type="date" class="form-control" value="1988-03-15">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Gender</label>
+                                    <select class="form-select">
+                                        <option>Female</option>
+                                        <option>Male</option>
+                                        <option>Other</option>
+                                        <option>Prefer not to say</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Address</label>
+                                    <input type="text" class="form-control" value="456 Professional Ave">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">City</label>
+                                    <input type="text" class="form-control" value="New York">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">State</label>
+                                    <input type="text" class="form-control" value="NY">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label">Zip Code</label>
+                                    <input type="text" class="form-control" value="10002">
+                                </div>
+                            </div>
+                            <div class="form-actions mt-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-2"></i>Save Changes
+                                </button>
+                                <button type="button" class="btn btn-outline-secondary">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Professional Tab -->
+            <div class="tab-content" id="professionalTab">
+                <div class="row g-4">
+                    <div class="col-lg-8">
+                        <div class="staff-card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Professional Details</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="professionalForm">
+                                    <div class="row g-3">
+                                        <div class="col-12">
+                                            <label class="form-label">Job Title *</label>
+                                            <input type="text" class="form-control" value="Senior Consultant" required>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Professional Bio</label>
+                                            <textarea class="form-control" rows="5"
+                                                placeholder="Tell clients about your expertise...">Experienced senior consultant with over 5 years in business strategy and organizational development. Specializing in helping small to medium businesses achieve their growth objectives through data-driven insights and strategic planning.</textarea>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Years of Experience</label>
+                                            <input type="number" class="form-control" value="5">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <label class="form-label">Specialization</label>
+                                            <select class="form-select">
+                                                <option selected>Business Consulting</option>
+                                                <option>Career Coaching</option>
+                                                <option>Training & Development</option>
+                                                <option>Technical Support</option>
+                                                <option>Other</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="form-label">Languages</label>
+                                            <input type="text" class="form-control" value="English, Spanish, French"
+                                                placeholder="Comma separated">
+                                        </div>
+                                    </div>
+                                    <div class="form-actions mt-4">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="bi bi-check-lg me-2"></i>Save Changes
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+
+                        <div class="staff-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Education & Certifications</h5>
+                                <button class="btn btn-sm btn-primary" id="addEducationBtn">
+                                    <i class="bi bi-plus-lg"></i> Add
+                                </button>
+                            </div>
+                            <div class="card-body">
+                                <div class="education-list">
+                                    <div class="education-item">
+                                        <div class="education-icon">
+                                            <i class="bi bi-mortarboard"></i>
+                                        </div>
+                                        <div class="education-info">
+                                            <h6>Master of Business Administration (MBA)</h6>
+                                            <p class="text-muted mb-1">Harvard Business School</p>
+                                            <small class="text-muted">2015 - 2017</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                    <div class="education-item">
+                                        <div class="education-icon">
+                                            <i class="bi bi-award"></i>
+                                        </div>
+                                        <div class="education-info">
+                                            <h6>Certified Business Consultant</h6>
+                                            <p class="text-muted mb-1">International Association of Business Consultants
+                                            </p>
+                                            <small class="text-muted">2018</small>
+                                        </div>
+                                        <button class="btn btn-sm btn-outline-danger">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="staff-card mb-4">
+                            <div class="card-header">
+                                <h5 class="card-title">Social Links</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="social-links-form">
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="bi bi-linkedin text-primary"></i>
+                                            LinkedIn</label>
+                                        <input type="url" class="form-control" placeholder="linkedin.com/in/username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="bi bi-twitter text-info"></i>
+                                            Twitter</label>
+                                        <input type="url" class="form-control" placeholder="twitter.com/username">
+                                    </div>
+                                    <div class="mb-3">
+                                        <label class="form-label"><i class="bi bi-globe text-success"></i>
+                                            Website</label>
+                                        <input type="url" class="form-control" placeholder="yourwebsite.com">
+                                    </div>
+                                    <button class="btn btn-primary w-100">Save Links</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="staff-card">
+                            <div class="card-header">
+                                <h5 class="card-title">Skills</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="skills-tags mb-3">
+                                    <span class="skill-tag">Strategic Planning <i class="bi bi-x"></i></span>
+                                    <span class="skill-tag">Business Analysis <i class="bi bi-x"></i></span>
+                                    <span class="skill-tag">Leadership <i class="bi bi-x"></i></span>
+                                    <span class="skill-tag">Project Management <i class="bi bi-x"></i></span>
+                                    <span class="skill-tag">Team Building <i class="bi bi-x"></i></span>
+                                </div>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="skillInput" placeholder="Add skill...">
+                                    <button class="btn btn-primary" id="addSkillBtn">
+                                        <i class="bi bi-plus-lg"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Services Tab -->
+            <div class="tab-content" id="servicesTab">
+                <div class="staff-card">
+                    <div class="card-header">
+                        <h5 class="card-title">My Services</h5>
+                        <button class="btn btn-sm btn-primary" id="addServiceBtn">
+                            <i class="bi bi-plus-lg"></i> Add Service
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="services-grid">
+                            <div class="service-card-staff">
+                                <div class="service-header-staff">
+                                    <h6>Business Strategy Consultation</h6>
+                                    <div class="service-status-badge active">Active</div>
+                                </div>
+                                <p class="service-description">One-on-one strategic planning session for business growth
+                                </p>
+                                <div class="service-details-staff">
+                                    <div class="detail-item">
+                                        <i class="bi bi-clock"></i>
+                                        <span>90 minutes</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="bi bi-cash"></i>
+                                        <span>$120</span>
+                                    </div>
+                                </div>
+                                <div class="service-actions-staff">
+                                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Duplicate</button>
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </div>
+                            </div>
+
+                            <div class="service-card-staff">
+                                <div class="service-header-staff">
+                                    <h6>Personal Consultation</h6>
+                                    <div class="service-status-badge active">Active</div>
+                                </div>
+                                <p class="service-description">Personalized guidance for career and personal development
+                                </p>
+                                <div class="service-details-staff">
+                                    <div class="detail-item">
+                                        <i class="bi bi-clock"></i>
+                                        <span>60 minutes</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="bi bi-cash"></i>
+                                        <span>$50</span>
+                                    </div>
+                                </div>
+                                <div class="service-actions-staff">
+                                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Duplicate</button>
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </div>
+                            </div>
+
+                            <div class="service-card-staff">
+                                <div class="service-header-staff">
+                                    <h6>Leadership Training</h6>
+                                    <div class="service-status-badge inactive">Inactive</div>
+                                </div>
+                                <p class="service-description">Comprehensive leadership development workshop</p>
+                                <div class="service-details-staff">
+                                    <div class="detail-item">
+                                        <i class="bi bi-clock"></i>
+                                        <span>120 minutes</span>
+                                    </div>
+                                    <div class="detail-item">
+                                        <i class="bi bi-cash"></i>
+                                        <span>$100</span>
+                                    </div>
+                                </div>
+                                <div class="service-actions-staff">
+                                    <button class="btn btn-sm btn-outline-primary">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary">Duplicate</button>
+                                    <button class="btn btn-sm btn-outline-danger">Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Portfolio Tab -->
+            <div class="tab-content" id="portfolioTab">
+                <div class="staff-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Portfolio Gallery</h5>
+                        <button class="btn btn-sm btn-primary" id="addPortfolioBtn">
+                            <i class="bi bi-plus-lg"></i> Add Image
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <div class="portfolio-grid">
+                            <div class="portfolio-item">
+                                <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&q=80"
+                                    alt="Portfolio">
+                                <div class="portfolio-overlay">
+                                    <button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=400&q=80"
+                                    alt="Portfolio">
+                                <div class="portfolio-overlay">
+                                    <button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?w=400&q=80"
+                                    alt="Portfolio">
+                                <div class="portfolio-overlay">
+                                    <button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                            <div class="portfolio-item">
+                                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=400&q=80"
+                                    alt="Portfolio">
+                                <div class="portfolio-overlay">
+                                    <button class="btn btn-sm btn-light"><i class="bi bi-eye"></i></button>
+                                    <button class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Tab -->
+            <div class="tab-content" id="accountTab">
+                <div class="staff-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Account Settings</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="accountForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" class="form-control" value="sarah_johnson">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Language</label>
+                                    <select class="form-select">
+                                        <option selected>English (US)</option>
+                                        <option>Spanish</option>
+                                        <option>French</option>
+                                        <option>German</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Timezone</label>
+                                    <select class="form-select">
+                                        <option selected>EST (UTC-5)</option>
+                                        <option>PST (UTC-8)</option>
+                                        <option>CST (UTC-6)</option>
+                                        <option>MST (UTC-7)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Currency</label>
+                                    <select class="form-select">
+                                        <option selected>USD ($)</option>
+                                        <option>EUR (€)</option>
+                                        <option>GBP (£)</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <hr class="my-4">
+
+                            <h6 class="mb-3">Notifications</h6>
+                            <div class="notification-settings">
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h6>Email Notifications</h6>
+                                        <p class="small text-muted mb-0">Receive booking and reminder emails</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h6>SMS Notifications</h6>
+                                        <p class="small text-muted mb-0">Get text messages for appointments</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" checked>
+                                    </div>
+                                </div>
+                                <div class="setting-item">
+                                    <div class="setting-info">
+                                        <h6>Marketing Emails</h6>
+                                        <p class="small text-muted mb-0">Receive updates and promotional content</p>
+                                    </div>
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-actions mt-4">
+                                <button type="submit" class="btn btn-primary">
+                                    <i class="bi bi-check-lg me-2"></i>Save Changes
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Security Tab -->
+            <div class="tab-content" id="securityTab">
+                <div class="staff-card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Change Password</h5>
+                    </div>
+                    <div class="card-body">
+                        <form id="passwordForm">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="form-label">Current Password</label>
+                                    <input type="password" class="form-control" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">New Password</label>
+                                    <input type="password" class="form-control" id="newPasswordInput" required>
+                                    <div class="password-strength mt-2">
+                                        <div class="strength-bar">
+                                            <div class="strength-bar-fill"></div>
+                                        </div>
+                                        <small class="strength-text text-muted">Password strength:
+                                            <span>-</span></small>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Confirm New Password</label>
+                                    <input type="password" class="form-control" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary mt-3">
+                                <i class="bi bi-key me-2"></i>Update Password
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="staff-card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title">Two-Factor Authentication</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="setting-item">
+                            <div class="setting-info">
+                                <h6>Enable 2FA</h6>
+                                <p class="small text-muted mb-0">Add an extra layer of security to your account</p>
+                            </div>
+                            <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="twoFactorSwitch">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="staff-card">
+                    <div class="card-header">
+                        <h5 class="card-title">Active Sessions</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="session-list">
+                            <div class="session-item-staff">
+                                <div class="session-icon-staff">
+                                    <i class="bi bi-laptop"></i>
+                                </div>
+                                <div class="session-info-staff">
+                                    <h6>Windows PC - Chrome</h6>
+                                    <p class="small text-muted mb-0">New York, USA • Active now</p>
+                                </div>
+                                <span class="badge bg-success">Current</span>
+                            </div>
+                            <div class="session-item-staff">
+                                <div class="session-icon-staff">
+                                    <i class="bi bi-phone"></i>
+                                </div>
+                                <div class="session-info-staff">
+                                    <h6>iPhone 14 - Safari</h6>
+                                    <p class="small text-muted mb-0">New York, USA • 2 hours ago</p>
+                                </div>
+                                <button class="btn btn-sm btn-outline-danger">Revoke</button>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-danger mt-3">
+                            <i class="bi bi-x-circle me-2"></i>Sign Out All Other Sessions
+                        </button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </main>
 
@@ -252,9 +843,10 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Staff Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/staff-profile.js"></script>
 </body>
+
 </html>
