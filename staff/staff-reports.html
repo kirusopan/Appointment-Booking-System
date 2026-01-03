@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - BookEase</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Staff Dashboard CSS -->
+    <link rel="stylesheet" href="assets/styles/dashboard.css">
+    <link rel="stylesheet" href="assets/styles/staff.css">
+    <link rel="stylesheet" href="assets/styles/staff-earning.css">
+</head>
+
+<body class="staff-panel">
+
+    <!-- ===== TOP HEADER BAR ===== -->
+    <header class="staff-header">
+        <div class="container-fluid">
+            <div class="header-content">
+                <div class="header-left">
+                    <button class="sidebar-toggle" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                    <div class="brand">
+                        <span class="logo-text">Book<span class="text-primary">Ease</span></span>
+                        <span class="badge bg-success ms-2">Staff</span>
+                    </div>
+                </div>
+
+                <div class="header-center">
+                    <div class="quick-date">
+                        <i class="bi bi-calendar3"></i>
+                        <span id="currentDate">Sunday, December 28, 2024</span>
+                    </div>
+                </div>
+
+                <div class="header-right">
+                    <!-- Quick Actions -->
+                    <button class="header-icon-btn" title="Quick Add Appointment" data-bs-toggle="modal"
+                        data-bs-target="#quickAddModal">
+                        <i class="bi bi-plus-circle"></i>
+                    </button>
+
+                    <!-- Notifications -->
+                    <div class="dropdown">
+                        <button class="header-icon-btn" data-bs-toggle="dropdown">
+                            <i class="bi bi-bell"></i>
+                            <span class="notification-count">4</span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="dropdown-header">
+                                <h6>Notifications</h6>
+                                <a href="#" class="small">Mark all read</a>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-icon bg-primary">
+                                    <i class="bi bi-calendar-plus"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p>New appointment request</p>
+                                    <small>5 minutes ago</small>
+                                </div>
+                            </div>
+                            <div class="notification-item unread">
+                                <div class="notification-icon bg-warning">
+                                    <i class="bi bi-clock"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p>Appointment in 30 minutes</p>
+                                    <small>Just now</small>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="notification-icon bg-success">
+                                    <i class="bi bi-check-circle"></i>
+                                </div>
+                                <div class="notification-content">
+                                    <p>Appointment completed</p>
+                                    <small>1 hour ago</small>
+                                </div>
+                            </div>
+                            <div class="dropdown-footer">
+                                <a href="#">View all notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages -->
+                    <button class="header-icon-btn" title="Messages">
+                        <i class="bi bi-chat-dots"></i>
+                        <span class="notification-count">2</span>
+                    </button>
+
+                    <!-- User Menu -->
+                    <div class="dropdown">
+                        <button class="staff-user-btn" data-bs-toggle="dropdown">
+                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
+                                alt="Staff" class="staff-avatar">
+                            <div class="staff-info">
+                                <span class="staff-name">Sarah Johnson</span>
+                                <span class="staff-role">Senior Consultant</span>
+                            </div>
+                            <i class="bi bi-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <div class="dropdown-header">
+                                <strong>Sarah Johnson</strong>
+                                <small class="d-block text-muted">sarah@bookease.com</small>
+                            </div>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="staff-profile.html">
+                                <i class="bi bi-person me-2"></i>My Profile
+                            </a>
+                            <a class="dropdown-item" href="staff-schedule.html">
+                                <i class="bi bi-calendar-week me-2"></i>My Schedule
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-gear me-2"></i>Settings
+                            </a>
+                            <a class="dropdown-item" href="#">
+                                <i class="bi bi-question-circle me-2"></i>Help & Support
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item text-danger" href="#">
+                                <i class="bi bi-box-arrow-right me-2"></i>Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== SIDEBAR NAVIGATION ===== -->
+    <aside class="staff-sidebar" id="staffSidebar">
+        <div class="sidebar-content">
+            <nav class="staff-nav">
+                <ul class="nav-list">
+                    <li class="nav-item active">
+                        <a href="staff.html" class="nav-link">
+                            <i class="bi bi-speedometer2"></i>
+                            <span>Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-appointments.html" class="nav-link">
+                            <i class="bi bi-calendar-check"></i>
+                            <span>My Appointments</span>
+                            <span class="badge bg-primary">8</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-schedule.html" class="nav-link">
+                            <i class="bi bi-calendar3"></i>
+                            <span>Schedule</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-clients.html" class="nav-link">
+                            <i class="bi bi-people"></i>
+                            <span>My Clients</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-availability.html" class="nav-link">
+                            <i class="bi bi-clock-history"></i>
+                            <span>Availability</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-divider"></div>
+
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="staff-earnings.html" class="nav-link">
+                            <i class="bi bi-cash-coin"></i>
+                            <span>Earnings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-reports.html" class="nav-link">
+                            <i class="bi bi-graph-up"></i>
+                            <span>Reports</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="staff-reviews.html" class="nav-link">
+                            <i class="bi bi-star"></i>
+                            <span>Reviews</span>
+                        </a>
+                    </li>
+                </ul>
+
+                <div class="nav-divider"></div>
+
+                <ul class="nav-list">
+                    <li class="nav-item">
+                        <a href="staff-profile.html" class="nav-link">
+                            <i class="bi bi-person-gear"></i>
+                            <span>Profile Settings</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">
+                            <i class="bi bi-house"></i>
+                            <span>Main Website</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Availability Status Widget -->
+            <div class="sidebar-widget">
+                <h6 class="widget-title">Your Status</h6>
+                <div class="status-toggle">
+                    <button class="status-btn active" data-status="available">
+                        <i class="bi bi-check-circle"></i>
+                        <span>Available</span>
+                    </button>
+                    <button class="status-btn" data-status="busy">
+                        <i class="bi bi-dash-circle"></i>
+                        <span>Busy</span>
+                    </button>
+                    <button class="status-btn" data-status="offline">
+                        <i class="bi bi-x-circle"></i>
+                        <span>Offline</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- ===== MAIN CONTENT AREA ===== -->
+    <main class="staff-main-content">
+        <div class="content-wrapper">
+
+            <!-- ===== PAGE HEADER ===== -->
+            <div class="staff-page-header">
+                <div class="page-header-left">
+                    <h1 class="page-title">Reports & Analytics</h1>
+                    <p class="page-subtitle">Comprehensive insights into your performance and activity</p>
+                </div>
+                <div class="page-header-right">
+                    <button class="btn btn-outline-primary">
+                        <i class="bi bi-printer me-2"></i>Print Report
+                    </button>
+                    <button class="btn btn-primary">
+                        <i class="bi bi-download me-2"></i>Download PDF
+                    </button>
+                </div>
+            </div>
+
+            <!-- ===== KEY METRICS ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-3 col-md-6">
+                    <div class="report-metric-card">
+                        <div class="metric-header">
+                            <i class="bi bi-calendar-check text-primary"></i>
+                            <span class="metric-period">This Month</span>
+                        </div>
+                        <h3 class="metric-value" data-target="32">0</h3>
+                        <p class="metric-label">Total Appointments</p>
+                        <div class="metric-comparison">
+                            <span class="badge bg-success">+25%</span>
+                            <span class="text-muted small">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="report-metric-card">
+                        <div class="metric-header">
+                            <i class="bi bi-person-check text-success"></i>
+                            <span class="metric-period">This Month</span>
+                        </div>
+                        <h3 class="metric-value" data-target="28">0</h3>
+                        <p class="metric-label">Unique Clients</p>
+                        <div class="metric-comparison">
+                            <span class="badge bg-success">+18%</span>
+                            <span class="text-muted small">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="report-metric-card">
+                        <div class="metric-header">
+                            <i class="bi bi-clock text-warning"></i>
+                            <span class="metric-period">This Month</span>
+                        </div>
+                        <h3 class="metric-value" data-target="48">0</h3>
+                        <p class="metric-label">Hours Worked</p>
+                        <div class="metric-comparison">
+                            <span class="badge bg-warning">+12%</span>
+                            <span class="text-muted small">vs last month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="report-metric-card">
+                        <div class="metric-header">
+                            <i class="bi bi-star text-info"></i>
+                            <span class="metric-period">Average</span>
+                        </div>
+                        <h3 class="metric-value">4.9</h3>
+                        <p class="metric-label">Client Rating</p>
+                        <div class="metric-comparison">
+                            <span class="badge bg-info">Excellent</span>
+                            <span class="text-muted small">127 reviews</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== REPORT FILTERS ===== -->
+            <div class="staff-card mb-4">
+                <div class="card-body">
+                    <div class="row g-3 align-items-center">
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">Report Period</label>
+                            <select class="form-select">
+                                <option>Last 7 Days</option>
+                                <option>Last 30 Days</option>
+                                <option selected>Last 3 Months</option>
+                                <option>Last 6 Months</option>
+                                <option>Last Year</option>
+                                <option>Custom Range</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">Compare With</label>
+                            <select class="form-select">
+                                <option selected>Previous Period</option>
+                                <option>Same Period Last Year</option>
+                                <option>Custom Period</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">Metric Focus</label>
+                            <select class="form-select">
+                                <option selected>All Metrics</option>
+                                <option>Appointments</option>
+                                <option>Revenue</option>
+                                <option>Client Satisfaction</option>
+                                <option>Performance</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <label class="form-label small mb-1">&nbsp;</label>
+                            <button class="btn btn-primary w-100">
+                                <i class="bi bi-arrow-clockwise me-2"></i>Update Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CHARTS ROW ===== -->
+            <div class="row g-4 mb-4">
+                <div class="col-lg-8">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-graph-up me-2"></i>Appointments Trend
+                            </h5>
+                            <div class="card-actions">
+                                <div class="btn-group btn-group-sm">
+                                    <button class="btn btn-outline-secondary">Daily</button>
+                                    <button class="btn btn-outline-secondary active">Weekly</button>
+                                    <button class="btn btn-outline-secondary">Monthly</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="appointmentsTrendChart" height="80"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-pie-chart me-2"></i>Appointment Status
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="statusPieChart" height="200"></canvas>
+                            <div class="status-legend mt-3">
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #10b981;"></div>
+                                    <span>Completed (78%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #f59e0b;"></div>
+                                    <span>Pending (15%)</span>
+                                </div>
+                                <div class="legend-item">
+                                    <div class="legend-color" style="background: #ef4444;"></div>
+                                    <span>Cancelled (7%)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== DETAILED REPORTS ===== -->
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-clock-history me-2"></i>Peak Hours Analysis
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="peak-hours-list">
+                                <div class="peak-hour-item">
+                                    <span class="hour-label">9:00 AM - 10:00 AM</span>
+                                    <div class="hour-bar-container">
+                                        <div class="hour-bar-fill" style="width: 85%"></div>
+                                    </div>
+                                    <span class="hour-count">17 appts</span>
+                                </div>
+                                <div class="peak-hour-item">
+                                    <span class="hour-label">10:00 AM - 11:00 AM</span>
+                                    <div class="hour-bar-container">
+                                        <div class="hour-bar-fill" style="width: 92%"></div>
+                                    </div>
+                                    <span class="hour-count">18 appts</span>
+                                </div>
+                                <div class="peak-hour-item">
+                                    <span class="hour-label">11:00 AM - 12:00 PM</span>
+                                    <div class="hour-bar-container">
+                                        <div class="hour-bar-fill" style="width: 70%"></div>
+                                    </div>
+                                    <span class="hour-count">14 appts</span>
+                                </div>
+                                <div class="peak-hour-item">
+                                    <span class="hour-label">2:00 PM - 3:00 PM</span>
+                                    <div class="hour-bar-container">
+                                        <div class="hour-bar-fill" style="width: 95%"></div>
+                                    </div>
+                                    <span class="hour-count">19 appts</span>
+                                </div>
+                                <div class="peak-hour-item">
+                                    <span class="hour-label">3:00 PM - 4:00 PM</span>
+                                    <div class="hour-bar-container">
+                                        <div class="hour-bar-fill" style="width: 78%"></div>
+                                    </div>
+                                    <span class="hour-count">15 appts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-trophy me-2"></i>Top Services
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="top-services-list">
+                                <div class="top-service-item">
+                                    <div class="service-rank">1</div>
+                                    <div class="service-info-report">
+                                        <h6>Business Strategy Meeting</h6>
+                                        <div class="service-stats-report">
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-calendar-check"></i> 14 bookings
+                                            </span>
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-cash"></i> $1,680
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-service-item">
+                                    <div class="service-rank">2</div>
+                                    <div class="service-info-report">
+                                        <h6>Personal Consultation</h6>
+                                        <div class="service-stats-report">
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-calendar-check"></i> 16 bookings
+                                            </span>
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-cash"></i> $800
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-service-item">
+                                    <div class="service-rank">3</div>
+                                    <div class="service-info-report">
+                                        <h6>Leadership Training</h6>
+                                        <div class="service-stats-report">
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-calendar-check"></i> 5 bookings
+                                            </span>
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-cash"></i> $500
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="top-service-item">
+                                    <div class="service-rank">4</div>
+                                    <div class="service-info-report">
+                                        <h6>Technical Support</h6>
+                                        <div class="service-stats-report">
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-calendar-check"></i> 7 bookings
+                                            </span>
+                                            <span class="stat-item-report">
+                                                <i class="bi bi-cash"></i> $280
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ===== CLIENT INSIGHTS ===== -->
+            <div class="row g-4 mt-2">
+                <div class="col-lg-6">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-people me-2"></i>Client Demographics
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="demographics-list">
+                                <div class="demo-item">
+                                    <span class="demo-label">New Clients</span>
+                                    <div class="demo-bar-container">
+                                        <div class="demo-bar-fill primary" style="width: 35%"></div>
+                                    </div>
+                                    <span class="demo-percent">35%</span>
+                                </div>
+                                <div class="demo-item">
+                                    <span class="demo-label">Returning Clients</span>
+                                    <div class="demo-bar-container">
+                                        <div class="demo-bar-fill success" style="width: 65%"></div>
+                                    </div>
+                                    <span class="demo-percent">65%</span>
+                                </div>
+                                <div class="demo-item">
+                                    <span class="demo-label">Corporate</span>
+                                    <div class="demo-bar-container">
+                                        <div class="demo-bar-fill warning" style="width: 45%"></div>
+                                    </div>
+                                    <span class="demo-percent">45%</span>
+                                </div>
+                                <div class="demo-item">
+                                    <span class="demo-label">Individual</span>
+                                    <div class="demo-bar-container">
+                                        <div class="demo-bar-fill info" style="width: 55%"></div>
+                                    </div>
+                                    <span class="demo-percent">55%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="staff-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <i class="bi bi-speedometer2 me-2"></i>Performance Metrics
+                            </h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="performance-metrics-list">
+                                <div class="perf-metric-item">
+                                    <div class="perf-metric-label">
+                                        <i class="bi bi-check-circle text-success"></i>
+                                        <span>Completion Rate</span>
+                                    </div>
+                                    <div class="perf-metric-value">96%</div>
+                                </div>
+                                <div class="perf-metric-item">
+                                    <div class="perf-metric-label">
+                                        <i class="bi bi-clock text-primary"></i>
+                                        <span>On-Time Rate</span>
+                                    </div>
+                                    <div class="perf-metric-value">95%</div>
+                                </div>
+                                <div class="perf-metric-item">
+                                    <div class="perf-metric-label">
+                                        <i class="bi bi-arrow-repeat text-warning"></i>
+                                        <span>Rebook Rate</span>
+                                    </div>
+                                    <div class="perf-metric-value">68%</div>
+                                </div>
+                                <div class="perf-metric-item">
+                                    <div class="perf-metric-label">
+                                        <i class="bi bi-x-circle text-danger"></i>
+                                        <span>Cancellation Rate</span>
+                                    </div>
+                                    <div class="perf-metric-value">4%</div>
+                                </div>
+                                <div class="perf-metric-item">
+                                    <div class="perf-metric-label">
+                                        <i class="bi bi-chat-dots text-info"></i>
+                                        <span>Response Time</span>
+                                    </div>
+                                    <div class="perf-metric-value">15 min</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Sidebar Overlay (Mobile) -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Staff Dashboard JS -->
+    <script src="assets/js/dashboard.js"></script>
+    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/staff-earing.js"></script>
+</body>
+
+</html>
