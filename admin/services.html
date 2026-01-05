@@ -20,7 +20,7 @@
 
     <!-- Admin CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/staff.css">
+    <link rel="stylesheet" href="assets/css/service.css">
 </head>
 
 <body>
@@ -161,69 +161,13 @@
             <div class="page-header mb-4">
                 <div class="row align-items-center">
                     <div class="col-md-6">
-                        <h2 class="page-title mb-0">Staff Management</h2>
-                        <p class="text-muted mb-0">Manage your team members and their schedules</p>
+                        <h2 class="page-title mb-0">Services Management</h2>
+                        <p class="text-muted mb-0">Manage all your services and offerings</p>
                     </div>
                     <div class="col-md-6 text-md-end mt-3 mt-md-0">
-                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addStaffModal">
-                            <i class="bi bi-person-plus me-2"></i>Add New Staff
+                        <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addServiceModal">
+                            <i class="bi bi-plus-circle me-2"></i>Add New Service
                         </button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Stats Cards -->
-            <div class="row g-4 mb-4">
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card primary">
-                        <div class="stat-header">
-                            <div>
-                                <div class="stat-value">8</div>
-                                <div class="stat-label">Total Staff</div>
-                            </div>
-                            <div class="stat-icon primary">
-                                <i class="bi bi-people"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card success">
-                        <div class="stat-header">
-                            <div>
-                                <div class="stat-value">6</div>
-                                <div class="stat-label">Active Today</div>
-                            </div>
-                            <div class="stat-icon success">
-                                <i class="bi bi-person-check"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card warning">
-                        <div class="stat-header">
-                            <div>
-                                <div class="stat-value">2</div>
-                                <div class="stat-label">On Leave</div>
-                            </div>
-                            <div class="stat-icon warning">
-                                <i class="bi bi-calendar-x"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-xl-3 col-md-6">
-                    <div class="stat-card info">
-                        <div class="stat-header">
-                            <div>
-                                <div class="stat-value">45</div>
-                                <div class="stat-label">Avg Bookings/Week</div>
-                            </div>
-                            <div class="stat-icon info">
-                                <i class="bi bi-graph-up"></i>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -232,28 +176,28 @@
             <div class="card mb-4">
                 <div class="card-body">
                     <div class="row g-3">
-                        <div class="col-md-5">
+                        <div class="col-md-4">
                             <div class="search-box">
                                 <i class="bi bi-search"></i>
-                                <input type="text" class="form-control" id="searchStaff"
-                                    placeholder="Search staff by name or email...">
+                                <input type="text" class="form-control" id="searchServices"
+                                    placeholder="Search services...">
                             </div>
+                        </div>
+                        <div class="col-md-3">
+                            <select class="form-select" id="filterCategory">
+                                <option value="">All Categories</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="business">Business</option>
+                                <option value="training">Training</option>
+                                <option value="support">Support</option>
+                                <option value="wellness">Wellness</option>
+                            </select>
                         </div>
                         <div class="col-md-3">
                             <select class="form-select" id="filterStatus">
                                 <option value="">All Status</option>
                                 <option value="active">Active</option>
                                 <option value="inactive">Inactive</option>
-                                <option value="leave">On Leave</option>
-                            </select>
-                        </div>
-                        <div class="col-md-2">
-                            <select class="form-select" id="filterRole">
-                                <option value="">All Roles</option>
-                                <option value="consultant">Consultant</option>
-                                <option value="advisor">Advisor</option>
-                                <option value="trainer">Trainer</option>
-                                <option value="specialist">Specialist</option>
                             </select>
                         </div>
                         <div class="col-md-2">
@@ -265,27 +209,27 @@
                 </div>
             </div>
 
-            <!-- Staff Table -->
+            <!-- Services Table -->
             <div class="card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">All Staff Members</h5>
-                    <span class="badge bg-primary" id="staffCount">8 Staff</span>
+                    <h5 class="mb-0">All Services</h5>
+                    <span class="badge bg-primary" id="servicesCount">12 Services</span>
                 </div>
                 <div class="card-body p-0">
                     <div class="table-responsive">
-                        <table class="table mb-0" id="staffTable">
+                        <table class="table mb-0" id="servicesTable">
                             <thead>
                                 <tr>
                                     <th>
                                         <input type="checkbox" class="form-check-input" id="selectAll">
                                     </th>
-                                    <th>Staff Member</th>
-                                    <th>Role</th>
-                                    <th>Services</th>
-                                    <th>Working Hours</th>
-                                    <th>Bookings</th>
-                                    <th>Rating</th>
+                                    <th>Service Name</th>
+                                    <th>Category</th>
+                                    <th>Duration</th>
+                                    <th>Price</th>
+                                    <th>Buffer Time</th>
                                     <th>Status</th>
+                                    <th>Bookings</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -296,50 +240,30 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-primary">
+                                                <i class="bi bi-person-video2"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">John Smith</div>
-                                                <small class="text-muted">john.smith@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-primary-soft">Senior Consultant</span>
-                                                </div>
+                                                <div class="fw-semibold">Personal Consultation</div>
+                                                <small class="text-muted">One-on-one professional guidance</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Consultant</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Consultation</span>
-                                        <span class="badge bg-light text-dark">+2 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Mon-Fri</div>
-                                        <small class="text-muted">9:00 AM - 5:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">142</div>
-                                        <small class="text-success">+12 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.9</span>
-                                            <small class="text-muted">(89)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-primary-soft">Consultation</span></td>
+                                    <td>60 min</td>
+                                    <td>$50.00</td>
+                                    <td>15 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>142</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                                data-bs-target="#viewStaffModal">
+                                                data-bs-target="#viewServiceModal">
                                                 <i class="bi bi-eye"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light" data-bs-toggle="modal"
-                                                data-bs-target="#editStaffModal">
+                                                data-bs-target="#editServiceModal">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -353,38 +277,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-success">
+                                                <i class="bi bi-briefcase"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">Sarah Johnson</div>
-                                                <small class="text-muted">sarah.johnson@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-success-soft">Business Advisor</span>
-                                                </div>
+                                                <div class="fw-semibold">Business Strategy Meeting</div>
+                                                <small class="text-muted">Strategic planning session</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Advisor</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Business</span>
-                                        <span class="badge bg-light text-dark">+1 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Mon-Sat</div>
-                                        <small class="text-muted">10:00 AM - 6:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">128</div>
-                                        <small class="text-success">+8 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.8</span>
-                                            <small class="text-muted">(76)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-success-soft">Business</span></td>
+                                    <td>90 min</td>
+                                    <td>$120.00</td>
+                                    <td>20 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>89</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -392,9 +299,6 @@
                                             </button>
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -408,93 +312,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-info">
+                                                <i class="bi bi-book"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">Michael Brown</div>
-                                                <small class="text-muted">michael.brown@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-info-soft">Training Specialist</span>
-                                                </div>
+                                                <div class="fw-semibold">Professional Skills Training</div>
+                                                <small class="text-muted">Hands-on training sessions</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Trainer</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Training</span>
-                                        <span class="badge bg-light text-dark">+3 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Tue-Sat</div>
-                                        <small class="text-muted">8:00 AM - 4:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">115</div>
-                                        <small class="text-success">+15 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">5.0</span>
-                                            <small class="text-muted">(92)</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-warning">On Leave</span></td>
-                                    <td>
-                                        <div class="btn-group">
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-eye"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light btn-delete">
-                                                <i class="bi bi-trash"></i>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <input type="checkbox" class="form-check-input">
-                                    </td>
-                                    <td>
-                                        <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80"
-                                                alt="" class="staff-avatar">
-                                            <div>
-                                                <div class="fw-semibold">Emily Davis</div>
-                                                <small class="text-muted">emily.davis@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-warning-soft">Support Manager</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>Specialist</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Support</span>
-                                        <span class="badge bg-light text-dark">+1 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Mon-Fri</div>
-                                        <small class="text-muted">9:00 AM - 5:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">156</div>
-                                        <small class="text-success">+18 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.9</span>
-                                            <small class="text-muted">(104)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-info-soft">Training</span></td>
+                                    <td>120 min</td>
+                                    <td>$80.00</td>
+                                    <td>30 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>67</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -502,9 +334,6 @@
                                             </button>
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -518,38 +347,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-warning">
+                                                <i class="bi bi-headset"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">David Martinez</div>
-                                                <small class="text-muted">david.martinez@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-danger-soft">Wellness Coach</span>
-                                                </div>
+                                                <div class="fw-semibold">Technical Support Session</div>
+                                                <small class="text-muted">Expert technical assistance</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Specialist</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Wellness</span>
-                                        <span class="badge bg-light text-dark">+2 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Mon-Thu</div>
-                                        <small class="text-muted">11:00 AM - 7:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">98</div>
-                                        <small class="text-success">+10 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.7</span>
-                                            <small class="text-muted">(68)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-warning-soft">Support</span></td>
+                                    <td>45 min</td>
+                                    <td>$40.00</td>
+                                    <td>10 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>124</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -557,9 +369,6 @@
                                             </button>
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -573,38 +382,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-danger">
+                                                <i class="bi bi-heart-pulse"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">James Wilson</div>
-                                                <small class="text-muted">james.wilson@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-success-soft">Financial Advisor</span>
-                                                </div>
+                                                <div class="fw-semibold">Wellness Coaching</div>
+                                                <small class="text-muted">Holistic wellness guidance</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Advisor</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Business</span>
-                                        <span class="badge bg-light text-dark">+1 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Mon-Fri</div>
-                                        <small class="text-muted">9:00 AM - 6:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">87</div>
-                                        <small class="text-success">+7 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.8</span>
-                                            <small class="text-muted">(54)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-danger-soft">Wellness</span></td>
+                                    <td>60 min</td>
+                                    <td>$60.00</td>
+                                    <td>15 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>98</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -612,9 +404,6 @@
                                             </button>
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -628,38 +417,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-success">
+                                                <i class="bi bi-calculator"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">Amanda Chen</div>
-                                                <small class="text-muted">amanda.chen@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-info-soft">Career Counselor</span>
-                                                </div>
+                                                <div class="fw-semibold">Financial Planning</div>
+                                                <small class="text-muted">Investment strategy consultation</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Consultant</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Consultation</span>
-                                        <span class="badge bg-light text-dark">+2 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Tue-Sat</div>
-                                        <small class="text-muted">10:00 AM - 6:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">103</div>
-                                        <small class="text-success">+9 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.9</span>
-                                            <small class="text-muted">(71)</small>
-                                        </div>
-                                    </td>
+                                    <td><span class="badge bg-success-soft">Business</span></td>
+                                    <td>90 min</td>
+                                    <td>$150.00</td>
+                                    <td>20 min</td>
                                     <td><span class="badge bg-success">Active</span></td>
+                                    <td>54</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -667,9 +439,6 @@
                                             </button>
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
-                                            </button>
-                                            <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -683,38 +452,21 @@
                                     </td>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80"
-                                                alt="" class="staff-avatar">
+                                            <div class="service-icon bg-primary">
+                                                <i class="bi bi-award"></i>
+                                            </div>
                                             <div>
-                                                <div class="fw-semibold">Robert Taylor</div>
-                                                <small class="text-muted">robert.taylor@email.com</small>
-                                                <div class="mt-1">
-                                                    <span class="badge bg-info-soft">Leadership Trainer</span>
-                                                </div>
+                                                <div class="fw-semibold">Career Guidance</div>
+                                                <small class="text-muted">Professional career counseling</small>
                                             </div>
                                         </div>
                                     </td>
-                                    <td>Trainer</td>
-                                    <td>
-                                        <span class="badge bg-light text-dark">Training</span>
-                                        <span class="badge bg-light text-dark">+1 more</span>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">Wed-Sun</div>
-                                        <small class="text-muted">9:00 AM - 5:00 PM</small>
-                                    </td>
-                                    <td>
-                                        <div class="fw-semibold">76</div>
-                                        <small class="text-danger">-2 this week</small>
-                                    </td>
-                                    <td>
-                                        <div class="rating">
-                                            <i class="bi bi-star-fill text-warning"></i>
-                                            <span class="fw-semibold">4.6</span>
-                                            <small class="text-muted">(48)</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-warning">On Leave</span></td>
+                                    <td><span class="badge bg-primary-soft">Consultation</span></td>
+                                    <td>75 min</td>
+                                    <td>$70.00</td>
+                                    <td>15 min</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>76</td>
                                     <td>
                                         <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
@@ -723,8 +475,180 @@
                                             <button class="btn btn-sm btn-light">
                                                 <i class="bi bi-pencil"></i>
                                             </button>
+                                            <button class="btn btn-sm btn-light btn-delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="service-icon bg-info">
+                                                <i class="bi bi-people"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Leadership Development</div>
+                                                <small class="text-muted">Advanced leadership training</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info-soft">Training</span></td>
+                                    <td>120 min</td>
+                                    <td>$100.00</td>
+                                    <td>30 min</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>43</td>
+                                    <td>
+                                        <div class="btn-group">
                                             <button class="btn btn-sm btn-light">
-                                                <i class="bi bi-calendar"></i>
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light btn-delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="service-icon bg-warning">
+                                                <i class="bi bi-chat-dots"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Quick Consultation</div>
+                                                <small class="text-muted">Short consultation session</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-warning-soft">Support</span></td>
+                                    <td>30 min</td>
+                                    <td>$35.00</td>
+                                    <td>10 min</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>156</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light btn-delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="service-icon bg-secondary">
+                                                <i class="bi bi-laptop"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Digital Marketing Workshop</div>
+                                                <small class="text-muted">Complete digital marketing course</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info-soft">Training</span></td>
+                                    <td>180 min</td>
+                                    <td>$200.00</td>
+                                    <td>30 min</td>
+                                    <td><span class="badge bg-danger">Inactive</span></td>
+                                    <td>28</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light btn-delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="service-icon bg-success">
+                                                <i class="bi bi-graph-up"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Sales Training</div>
+                                                <small class="text-muted">Boost your sales skills</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-info-soft">Training</span></td>
+                                    <td>90 min</td>
+                                    <td>$90.00</td>
+                                    <td>20 min</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>61</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-pencil"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light btn-delete">
+                                                <i class="bi bi-trash"></i>
+                                            </button>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="form-check-input">
+                                    </td>
+                                    <td>
+                                        <div class="d-flex align-items-center">
+                                            <div class="service-icon bg-danger">
+                                                <i class="bi bi-shield-check"></i>
+                                            </div>
+                                            <div>
+                                                <div class="fw-semibold">Health Consultation</div>
+                                                <small class="text-muted">Personal health assessment</small>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><span class="badge bg-danger-soft">Wellness</span></td>
+                                    <td>45 min</td>
+                                    <td>$55.00</td>
+                                    <td>15 min</td>
+                                    <td><span class="badge bg-success">Active</span></td>
+                                    <td>82</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-eye"></i>
+                                            </button>
+                                            <button class="btn btn-sm btn-light">
+                                                <i class="bi bi-pencil"></i>
                                             </button>
                                             <button class="btn btn-sm btn-light btn-delete">
                                                 <i class="bi bi-trash"></i>
@@ -739,7 +663,7 @@
                 <div class="card-footer">
                     <div class="row align-items-center">
                         <div class="col-md-6">
-                            <span class="text-muted">Showing 1 to 8 of 8 staff members</span>
+                            <span class="text-muted">Showing 1 to 12 of 12 services</span>
                         </div>
                         <div class="col-md-6">
                             <nav>
@@ -748,6 +672,8 @@
                                         <a class="page-link" href="#">Previous</a>
                                     </li>
                                     <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
                                     <li class="page-item">
                                         <a class="page-link" href="#">Next</a>
                                     </li>
@@ -758,74 +684,53 @@
                 </div>
             </div>
 
-            <!-- Add Staff Modal -->
-            <div class="modal fade" id="addStaffModal" tabindex="-1">
+            <!-- Add Service Modal -->
+            <div class="modal fade" id="addServiceModal" tabindex="-1">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title">Add New Staff Member</h5>
+                            <h5 class="modal-title">Add New Service</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="addStaffForm">
+                            <form id="addServiceForm">
                                 <div class="row g-3">
-                                    <div class="col-md-6">
-                                        <label class="form-label">Full Name</label>
+                                    <div class="col-md-12">
+                                        <label class="form-label">Service Name</label>
                                         <input type="text" class="form-control" required>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Email</label>
-                                        <input type="email" class="form-control" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Phone</label>
-                                        <input type="tel" class="form-control" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label class="form-label">Role</label>
+                                        <label class="form-label">Category</label>
                                         <select class="form-select" required>
-                                            <option value="">Select Role</option>
-                                            <option>Consultant</option>
-                                            <option>Advisor</option>
-                                            <option>Trainer</option>
-                                            <option>Specialist</option>
+                                            <option value="">Select Category</option>
+                                            <option>Consultation</option>
+                                            <option>Business</option>
+                                            <option>Training</option>
+                                            <option>Support</option>
+                                            <option>Wellness</option>
                                         </select>
                                     </div>
                                     <div class="col-md-6">
-                                        <label class="form-label">Working Days</label>
-                                        <select class="form-select" multiple required>
-                                            <option>Monday</option>
-                                            <option>Tuesday</option>
-                                            <option>Wednesday</option>
-                                            <option>Thursday</option>
-                                            <option>Friday</option>
-                                            <option>Saturday</option>
-                                            <option>Sunday</option>
-                                        </select>
+                                        <label class="form-label">Price ($)</label>
+                                        <input type="number" class="form-control" required>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">Start Time</label>
-                                        <input type="time" class="form-control" required>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Duration (minutes)</label>
+                                        <input type="number" class="form-control" required>
                                     </div>
-                                    <div class="col-md-3">
-                                        <label class="form-label">End Time</label>
-                                        <input type="time" class="form-control" required>
+                                    <div class="col-md-6">
+                                        <label class="form-label">Buffer Time (minutes)</label>
+                                        <input type="number" class="form-control" required>
                                     </div>
                                     <div class="col-md-12">
-                                        <label class="form-label">Assign Services</label>
-                                        <select class="form-select" multiple required>
-                                            <option>Personal Consultation</option>
-                                            <option>Business Strategy</option>
-                                            <option>Technical Support</option>
-                                            <option>Wellness Coaching</option>
-                                            <option>Training Session</option>
-                                        </select>
+                                        <label class="form-label">Description</label>
+                                        <textarea class="form-control" rows="3" required></textarea>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" id="activeStaff" checked>
-                                            <label class="form-check-label" for="activeStaff">
-                                                Active Staff Member
+                                            <input class="form-check-input" type="checkbox" id="activeStatus" checked>
+                                            <label class="form-check-label" for="activeStatus">
+                                                Active Service
                                             </label>
                                         </div>
                                     </div>
@@ -834,7 +739,7 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-primary" id="saveStaff">Save Staff</button>
+                            <button type="button" class="btn btn-primary" id="saveService">Save Service</button>
                         </div>
                     </div>
                 </div>
@@ -848,7 +753,7 @@
 
     <!-- Admin JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/staff.js"></script>
+    <script src="assets/js/service.js"></script>
 </body>
 
 </html>

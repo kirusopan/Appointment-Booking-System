@@ -1,0 +1,32 @@
+/* =========================================
+   ADMIN STAFF - STYLES
+   ========================================= */
+
+.staff-avatar {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 1rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.rating i {
+    font-size: 1rem;
+}
+
+.rating .fw-semibold {
+    font-size: 1rem;
+    color: var(--dark);
+}
+
+.rating .text-muted {
+    font-size: 0.875rem;
+}

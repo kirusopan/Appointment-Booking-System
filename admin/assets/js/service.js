@@ -1,33 +1,32 @@
 /* =========================================
-   ADMIN STAFF - SCRIPTS
+   ADMIN SERVICES - SCRIPTS
    ========================================= */
 
 document.addEventListener('DOMContentLoaded', function() {
 
     // ===== SEARCH & FILTER =====
-    const searchInput = document.getElementById('searchStaff');
+    const searchInput = document.getElementById('searchServices');
+    const categoryFilter = document.getElementById('filterCategory');
     const statusFilter = document.getElementById('filterStatus');
-    const roleFilter = document.getElementById('filterRole');
     const resetBtn = document.getElementById('resetFilters');
-    const tableRows = document.querySelectorAll('#staffTable tbody tr');
+    const tableRows = document.querySelectorAll('#servicesTable tbody tr');
 
     const filterTable = () => {
         const searchTerm = searchInput.value.toLowerCase();
+        const categoryValue = categoryFilter.value.toLowerCase();
         const statusValue = statusFilter.value.toLowerCase();
-        const roleValue = roleFilter.value.toLowerCase();
         let visibleCount = 0;
 
         tableRows.forEach(row => {
-            const staffName = row.querySelector('.fw-semibold').textContent.toLowerCase();
-            const staffEmail = row.querySelector('small.text-muted').textContent.toLowerCase();
-            const role = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
-            const status = row.querySelector('td:nth-child(8)').textContent.toLowerCase();
+            const serviceName = row.querySelector('.fw-semibold').textContent.toLowerCase();
+            const category = row.querySelector('td:nth-child(3)').textContent.toLowerCase();
+            const status = row.querySelector('td:nth-child(7)').textContent.toLowerCase();
 
-            const matchesSearch = staffName.includes(searchTerm) || staffEmail.includes(searchTerm);
+            const matchesSearch = serviceName.includes(searchTerm);
+            const matchesCategory = !categoryValue || category.includes(categoryValue);
             const matchesStatus = !statusValue || status.includes(statusValue);
-            const matchesRole = !roleValue || role.includes(roleValue);
 
-            if (matchesSearch && matchesStatus && matchesRole) {
+            if (matchesSearch && matchesCategory && matchesStatus) {
                 row.style.display = '';
                 visibleCount++;
             } else {
@@ -35,25 +34,25 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        document.getElementById('staffCount').textContent = `${visibleCount} Staff`;
+        document.getElementById('servicesCount').textContent = `${visibleCount} Services`;
     };
 
     if (searchInput) searchInput.addEventListener('input', filterTable);
+    if (categoryFilter) categoryFilter.addEventListener('change', filterTable);
     if (statusFilter) statusFilter.addEventListener('change', filterTable);
-    if (roleFilter) roleFilter.addEventListener('change', filterTable);
 
     if (resetBtn) {
         resetBtn.addEventListener('click', () => {
             searchInput.value = '';
+            categoryFilter.value = '';
             statusFilter.value = '';
-            roleFilter.value = '';
             filterTable();
         });
     }
 
     // ===== SELECT ALL CHECKBOX =====
     const selectAllCheckbox = document.getElementById('selectAll');
-    const rowCheckboxes = document.querySelectorAll('#staffTable tbody input[type="checkbox"]');
+    const rowCheckboxes = document.querySelectorAll('#servicesTable tbody input[type="checkbox"]');
 
     if (selectAllCheckbox) {
         selectAllCheckbox.addEventListener('change', function() {
@@ -72,14 +71,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // ===== SAVE STAFF =====
-    const saveStaffBtn = document.getElementById('saveStaff');
-    if (saveStaffBtn) {
-        saveStaffBtn.addEventListener('click', () => {
-            const form = document.getElementById('addStaffForm');
+    // ===== SAVE SERVICE =====
+    const saveServiceBtn = document.getElementById('saveService');
+    if (saveServiceBtn) {
+        saveServiceBtn.addEventListener('click', () => {
+            const form = document.getElementById('addServiceForm');
             if (form.checkValidity()) {
-                AdminUtils.showToast('Staff member added successfully!', 'success');
-                bootstrap.Modal.getInstance(document.getElementById('addStaffModal')).hide();
+                AdminUtils.showToast('Service added successfully!', 'success');
+                bootstrap.Modal.getInstance(document.getElementById('addServiceModal')).hide();
                 form.reset();
                 setTimeout(() => location.reload(), 1000);
             } else {
@@ -88,17 +87,17 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // ===== DELETE STAFF =====
+    // ===== DELETE SERVICE =====
     document.querySelectorAll('.btn-delete').forEach(btn => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
-            AdminUtils.confirmAction('Are you sure you want to delete this staff member?', () => {
+            AdminUtils.confirmAction('Are you sure you want to delete this service?', () => {
                 const row = btn.closest('tr');
                 row.style.transition = 'all 0.3s ease';
                 row.style.opacity = '0';
                 setTimeout(() => {
                     row.remove();
-                    AdminUtils.showToast('Staff member deleted successfully', 'success');
+                    AdminUtils.showToast('Service deleted successfully', 'success');
                     filterTable();
                 }, 300);
             });
@@ -115,5 +114,5 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    console.log('%c👥 Staff Management Loaded', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+    console.log('%c📦 Services Management Loaded', 'color: #6366f1; font-size: 16px; font-weight: bold;');
 });
