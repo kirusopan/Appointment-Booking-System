@@ -1,0 +1,32 @@
+/* =========================================
+   ADMIN CUSTOMERS - STYLES
+   ========================================= */
+
+.customer-avatar {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.customer-contact {
+    font-size: 0.875rem;
+}
+
+.customer-contact div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.25rem;
+}
+
+.customer-contact div:last-child {
+    margin-bottom: 0;
+}
+
+.customer-contact i {
+    font-size: 0.875rem;
+    color: var(--gray);
+}
