@@ -1,0 +1,13 @@
+/* =========================================
+   ADMIN USERS - STYLES
+   ========================================= */
+
+.user-avatar {
+    width: 45px;
+    height: 45px;
+    min-width: 45px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-right: 0.75rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
