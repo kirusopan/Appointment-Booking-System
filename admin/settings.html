@@ -1,28 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Dashboard - BookEase</title>
-    
+
     <!-- Bootstrap 5 CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-    
+
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
     <!-- Admin CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/settings.css">
 </head>
+
 <body>
 
-      <!-- Sidebar -->
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h4 class="sidebar-brand">Book<span class="text-primary">Ease</span></h4>
@@ -120,7 +123,7 @@
                     <input type="text" class="form-control" placeholder="Search...">
                 </div>
             </div>
-            
+
             <div class="topbar-right">
                 <div class="topbar-item">
                     <button class="topbar-btn">
@@ -141,8 +144,11 @@
                     <ul class="dropdown-menu dropdown-menu-end">
                         <li><a class="dropdown-item" href="#"><i class="bi bi-person me-2"></i>Profile</a></li>
                         <li><a class="dropdown-item" href="#"><i class="bi bi-gear me-2"></i>Settings</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.html"><i class="bi bi-box-arrow-left me-2"></i>Logout</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" href="index.html"><i
+                                    class="bi bi-box-arrow-left me-2"></i>Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -151,16 +157,455 @@
         <!-- Page Content -->
         <main class="content-area">
 
+            <!-- Page Header -->
+            <div class="page-header mb-4">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h2 class="page-title mb-0">System Settings</h2>
+                        <p class="text-muted mb-0">Configure your system preferences</p>
+                    </div>
+                    <div class="col-md-6 text-md-end mt-3 mt-md-0">
+                        <button class="btn btn-primary" id="saveAllSettings">
+                            <i class="bi bi-save me-2"></i>Save All Changes
+                        </button>
+                    </div>
+                </div>
+            </div>
 
+            <!-- Settings Tabs -->
+            <div class="card">
+                <div class="card-header">
+                    <ul class="nav nav-tabs card-header-tabs" id="settingsTabs" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="general-tab" data-bs-toggle="tab"
+                                data-bs-target="#general" type="button" role="tab">
+                                <i class="bi bi-gear me-2"></i>General
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="business-tab" data-bs-toggle="tab" data-bs-target="#business"
+                                type="button" role="tab">
+                                <i class="bi bi-building me-2"></i>Business Info
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="localization-tab" data-bs-toggle="tab"
+                                data-bs-target="#localization" type="button" role="tab">
+                                <i class="bi bi-globe me-2"></i>Localization
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="security-tab" data-bs-toggle="tab" data-bs-target="#security"
+                                type="button" role="tab">
+                                <i class="bi bi-shield-lock me-2"></i>Security
+                            </button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="advanced-tab" data-bs-toggle="tab" data-bs-target="#advanced"
+                                type="button" role="tab">
+                                <i class="bi bi-sliders me-2"></i>Advanced
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+                <div class="card-body">
+                    <div class="tab-content" id="settingsTabContent">
+
+                        <!-- General Tab -->
+                        <div class="tab-pane fade show active" id="general" role="tabpanel">
+                            <h5 class="mb-4">General Settings</h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Site Name</label>
+                                    <input type="text" class="form-control" value="BookEase">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Site Tagline</label>
+                                    <input type="text" class="form-control" value="Professional Appointment Booking">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Admin Email</label>
+                                    <input type="email" class="form-control" value="admin@bookease.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Support Email</label>
+                                    <input type="email" class="form-control" value="support@bookease.com">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-semibold">Site Description</label>
+                                    <textarea class="form-control"
+                                        rows="3">Professional appointment booking system for modern service businesses</textarea>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Logo</label>
+                                    <div class="logo-upload">
+                                        <div class="logo-preview">
+                                            <img src="https://via.placeholder.com/150x50?text=BookEase" alt="Logo">
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm mt-2">
+                                            <i class="bi bi-upload me-2"></i>Upload Logo
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Favicon</label>
+                                    <div class="logo-upload">
+                                        <div class="favicon-preview">
+                                            <img src="https://via.placeholder.com/32x32?text=B" alt="Favicon">
+                                        </div>
+                                        <button class="btn btn-outline-primary btn-sm mt-2">
+                                            <i class="bi bi-upload me-2"></i>Upload Favicon
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check form-switch">
+                                        <input class="form-check-input" type="checkbox" id="maintenanceMode">
+                                        <label class="form-check-label fw-semibold" for="maintenanceMode">
+                                            Maintenance Mode
+                                        </label>
+                                    </div>
+                                    <small class="text-muted">Enable this to put your site in maintenance mode</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Business Info Tab -->
+                        <div class="tab-pane fade" id="business" role="tabpanel">
+                            <h5 class="mb-4">Business Information</h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Business Name</label>
+                                    <input type="text" class="form-control" value="BookEase Inc.">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Business Type</label>
+                                    <select class="form-select">
+                                        <option>Consultation Services</option>
+                                        <option>Healthcare</option>
+                                        <option>Salon & Spa</option>
+                                        <option>Fitness & Wellness</option>
+                                        <option>Education & Training</option>
+                                        <option>Professional Services</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Phone Number</label>
+                                    <input type="tel" class="form-control" value="+1 234 567 8900">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Fax Number</label>
+                                    <input type="tel" class="form-control" placeholder="Optional">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label fw-semibold">Address</label>
+                                    <input type="text" class="form-control" value="123 Business Street">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">City</label>
+                                    <input type="text" class="form-control" value="New York">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">State/Province</label>
+                                    <input type="text" class="form-control" value="NY">
+                                </div>
+                                <div class="col-md-4">
+                                    <label class="form-label fw-semibold">ZIP/Postal Code</label>
+                                    <input type="text" class="form-control" value="10001">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Country</label>
+                                    <select class="form-select">
+                                        <option selected>United States</option>
+                                        <option>Canada</option>
+                                        <option>United Kingdom</option>
+                                        <option>Australia</option>
+                                        <option>Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Tax ID / Registration Number</label>
+                                    <input type="text" class="form-control" placeholder="Optional">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Localization Tab -->
+                        <div class="tab-pane fade" id="localization" role="tabpanel">
+                            <h5 class="mb-4">Localization Settings</h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Default Language</label>
+                                    <select class="form-select">
+                                        <option selected>English</option>
+                                        <option>Spanish</option>
+                                        <option>French</option>
+                                        <option>German</option>
+                                        <option>Chinese</option>
+                                        <option>Japanese</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Timezone</label>
+                                    <select class="form-select">
+                                        <option>UTC</option>
+                                        <option selected>America/New_York (EST)</option>
+                                        <option>America/Los_Angeles (PST)</option>
+                                        <option>Europe/London (GMT)</option>
+                                        <option>Asia/Tokyo (JST)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Date Format</label>
+                                    <select class="form-select">
+                                        <option selected>MM/DD/YYYY</option>
+                                        <option>DD/MM/YYYY</option>
+                                        <option>YYYY-MM-DD</option>
+                                        <option>DD-MM-YYYY</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Time Format</label>
+                                    <select class="form-select">
+                                        <option selected>12 Hour (AM/PM)</option>
+                                        <option>24 Hour</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Currency</label>
+                                    <select class="form-select">
+                                        <option selected>USD - US Dollar ($)</option>
+                                        <option>EUR - Euro (€)</option>
+                                        <option>GBP - British Pound (£)</option>
+                                        <option>JPY - Japanese Yen (¥)</option>
+                                        <option>AUD - Australian Dollar (A$)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Currency Position</label>
+                                    <select class="form-select">
+                                        <option selected>Before Amount ($100)</option>
+                                        <option>After Amount (100$)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Decimal Separator</label>
+                                    <select class="form-select">
+                                        <option selected>Dot (.)</option>
+                                        <option>Comma (,)</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Thousand Separator</label>
+                                    <select class="form-select">
+                                        <option selected>Comma (,)</option>
+                                        <option>Dot (.)</option>
+                                        <option>Space ( )</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Week Starts On</label>
+                                    <select class="form-select">
+                                        <option>Sunday</option>
+                                        <option selected>Monday</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Security Tab -->
+                        <div class="tab-pane fade" id="security" role="tabpanel">
+                            <h5 class="mb-4">Security Settings</h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3">Password Requirements</h6>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="requireUppercase" checked>
+                                        <label class="form-check-label" for="requireUppercase">
+                                            Require uppercase letters
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="requireLowercase" checked>
+                                        <label class="form-check-label" for="requireLowercase">
+                                            Require lowercase letters
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="requireNumbers" checked>
+                                        <label class="form-check-label" for="requireNumbers">
+                                            Require numbers
+                                        </label>
+                                    </div>
+                                    <div class="form-check mb-3">
+                                        <input class="form-check-input" type="checkbox" id="requireSpecial">
+                                        <label class="form-check-label" for="requireSpecial">
+                                            Require special characters
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Minimum Password Length</label>
+                                    <input type="number" class="form-control" value="8" min="6" max="20">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Session Timeout (minutes)</label>
+                                    <input type="number" class="form-control" value="120" min="15">
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3 mt-3">Two-Factor Authentication</h6>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enable2FA">
+                                        <label class="form-check-label fw-semibold" for="enable2FA">
+                                            Enable Two-Factor Authentication
+                                        </label>
+                                    </div>
+                                    <small class="text-muted">Require users to verify their identity with a second
+                                        factor</small>
+                                </div>
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3 mt-3">Login Security</h6>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableCaptcha" checked>
+                                        <label class="form-check-label fw-semibold" for="enableCaptcha">
+                                            Enable CAPTCHA on Login
+                                        </label>
+                                    </div>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableRateLimit" checked>
+                                        <label class="form-check-label fw-semibold" for="enableRateLimit">
+                                            Enable Login Rate Limiting
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Max Login Attempts</label>
+                                    <input type="number" class="form-control" value="5" min="3" max="10">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-semibold">Lockout Duration (minutes)</label>
+                                    <input type="number" class="form-control" value="30" min="5">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Advanced Tab -->
+                        <div class="tab-pane fade" id="advanced" role="tabpanel">
+                            <h5 class="mb-4">Advanced Settings</h5>
+
+                            <div class="row g-4">
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3">System Options</h6>
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableDebug">
+                                        <label class="form-check-label fw-semibold" for="enableDebug">
+                                            Enable Debug Mode
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mb-3">Show detailed error messages (not recommended
+                                        for production)</small>
+
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableCache" checked>
+                                        <label class="form-check-label fw-semibold" for="enableCache">
+                                            Enable Caching
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mb-3">Improve performance by caching data</small>
+
+                                    <div class="form-check form-switch mb-3">
+                                        <input class="form-check-input" type="checkbox" id="enableAnalytics" checked>
+                                        <label class="form-check-label fw-semibold" for="enableAnalytics">
+                                            Enable Analytics
+                                        </label>
+                                    </div>
+                                    <small class="text-muted d-block mb-3">Track user behavior and system usage</small>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3 mt-3">Database</h6>
+                                    <div class="alert alert-info">
+                                        <i class="bi bi-info-circle me-2"></i>
+                                        <strong>Database Status:</strong> Connected - MySQL 8.0
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-primary w-100">
+                                        <i class="bi bi-arrow-clockwise me-2"></i>Clear Cache
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-warning w-100">
+                                        <i class="bi bi-database me-2"></i>Optimize Database
+                                    </button>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3 mt-3">Backup & Restore</h6>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-success w-100">
+                                        <i class="bi bi-download me-2"></i>Backup Database
+                                    </button>
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="btn btn-outline-danger w-100">
+                                        <i class="bi bi-upload me-2"></i>Restore Database
+                                    </button>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <h6 class="fw-semibold mb-3 mt-3">System Information</h6>
+                                    <div class="system-info">
+                                        <div class="row g-3">
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <span class="text-muted">Version:</span>
+                                                    <span class="fw-semibold">1.0.0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <span class="text-muted">PHP Version:</span>
+                                                    <span class="fw-semibold">8.2.0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <span class="text-muted">Laravel Version:</span>
+                                                    <span class="fw-semibold">10.0</span>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="info-item">
+                                                    <span class="text-muted">Server:</span>
+                                                    <span class="fw-semibold">Apache 2.4</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
 
         </main>
     </div>
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Admin JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/settings.js"></script>
 </body>
+
 </html>

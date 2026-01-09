@@ -1,0 +1,68 @@
+/* =========================================
+   ADMIN SETTINGS - STYLES
+   ========================================= */
+
+.logo-upload {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.logo-preview {
+    padding: 1rem;
+    border: 2px dashed var(--gray-light);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+}
+
+.logo-preview img {
+    max-width: 150px;
+    height: auto;
+}
+
+.favicon-preview {
+    padding: 1rem;
+    border: 2px dashed var(--gray-light);
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--light);
+    width: 80px;
+    height: 80px;
+}
+
+.favicon-preview img {
+    width: 32px;
+    height: 32px;
+}
+
+.system-info .info-item {
+    padding: 0.75rem;
+    background: var(--light);
+    border-radius: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-tabs .nav-link {
+    color: var(--gray);
+    border: none;
+    border-bottom: 2px solid transparent;
+    font-weight: 500;
+}
+
+.nav-tabs .nav-link:hover {
+    color: var(--primary);
+    border-color: transparent;
+}
+
+.nav-tabs .nav-link.active {
+    color: var(--primary);
+    background: transparent;
+    border-color: transparent transparent var(--primary) transparent;
+}
