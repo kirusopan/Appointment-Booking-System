@@ -734,6 +734,146 @@
             </div>
 
         </main>
+
+        <!-- View Email Template Modal -->
+        <div class="modal fade" id="viewTemplateModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Email Template Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="text-muted small">Template Name</label>
+                                <div class="fw-semibold">Booking Confirmation</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Status</label>
+                                <div><span class="badge bg-success">Active</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Type</label>
+                                <div><span class="badge bg-primary-soft">Customer</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Last Modified</label>
+                                <div class="fw-semibold">January 10, 2026</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Email Subject</label>
+                                <div class="fw-semibold mb-3">Your appointment has been confirmed</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Email Body</label>
+                                <div class="email-preview p-4 bg-light rounded">
+                                    <p><strong>Dear {customer_name},</strong></p>
+                                    <p>Thank you for booking with us! Your appointment has been confirmed.</p>
+                                    <p><strong>Appointment Details:</strong></p>
+                                    <ul>
+                                        <li>Service: {service_name}</li>
+                                        <li>Date: {appointment_date}</li>
+                                        <li>Time: {appointment_time}</li>
+                                        <li>Duration: {duration}</li>
+                                    </ul>
+                                    <p>If you need to reschedule or cancel, please contact us at least 24 hours in
+                                        advance.</p>
+                                    <p>Best regards,<br>The BookEase Team</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Available Variables</label>
+                                <div class="d-flex flex-wrap gap-2">
+                                    <span class="badge bg-secondary">{customer_name}</span>
+                                    <span class="badge bg-secondary">{service_name}</span>
+                                    <span class="badge bg-secondary">{appointment_date}</span>
+                                    <span class="badge bg-secondary">{appointment_time}</span>
+                                    <span class="badge bg-secondary">{duration}</span>
+                                    <span class="badge bg-secondary">{staff_name}</span>
+                                    <span class="badge bg-secondary">{price}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="bi bi-send me-2"></i>Send Test Email
+                        </button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="bi bi-pencil me-2"></i>Edit Template
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Template Modal -->
+        <div class="modal fade" id="editTemplateModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Email Template</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editTemplateForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Template Name</label>
+                                    <input type="text" class="form-control" value="Booking Confirmation" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Type</label>
+                                    <select class="form-select" required>
+                                        <option selected>Customer</option>
+                                        <option>Admin</option>
+                                        <option>Staff</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Email Subject</label>
+                                    <input type="text" class="form-control" value="Your appointment has been confirmed"
+                                        required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Email Body</label>
+                                    <textarea class="form-control" rows="10" required>Dear {customer_name},
+
+Thank you for booking with us! Your appointment has been confirmed.
+
+Appointment Details:
+- Service: {service_name}
+- Date: {appointment_date}
+- Time: {appointment_time}
+- Duration: {duration}
+
+If you need to reschedule or cancel, please contact us at least 24 hours in advance.
+
+Best regards,
+The BookEase Team</textarea>
+                                    <small class="text-muted">Use variables: {customer_name}, {service_name},
+                                        {appointment_date}, {appointment_time}, {duration}</small>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="editActiveTemplate" checked>
+                                        <label class="form-check-label" for="editActiveTemplate">
+                                            Active Template
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="updateTemplate">Update Template</button>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Bootstrap 5 JS Bundle -->

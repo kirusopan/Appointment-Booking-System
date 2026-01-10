@@ -25,7 +25,7 @@
 
 <body>
 
-      <!-- Sidebar -->
+    <!-- Sidebar -->
     <aside class="sidebar" id="sidebar">
         <div class="sidebar-header">
             <h4 class="sidebar-brand">Book<span class="text-primary">Ease</span></h4>
@@ -506,6 +506,157 @@
 
 
         </main>
+
+        <!-- View Appointment Details Modal -->
+        <div class="modal fade" id="viewAppointmentModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Appointment Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-4">
+                            <div class="col-md-6">
+                                <label class="text-muted small">Appointment ID</label>
+                                <div class="fw-semibold">#A1245</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Status</label>
+                                <div><span class="badge bg-success">Confirmed</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Date & Time</label>
+                                <div class="fw-semibold">January 15, 2026 at 09:00 AM</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Duration</label>
+                                <div class="fw-semibold">60 minutes</div>
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                                <h6 class="mb-3">Customer Information</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Customer Name</label>
+                                <div class="fw-semibold">Sarah Johnson</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Email</label>
+                                <div class="fw-semibold">sarah.j@email.com</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Phone</label>
+                                <div class="fw-semibold">+1 234 567 8901</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Customer ID</label>
+                                <div class="fw-semibold">#C1001</div>
+                            </div>
+                            <div class="col-md-12">
+                                <hr>
+                                <h6 class="mb-3">Service Details</h6>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Service</label>
+                                <div class="fw-semibold">Business Consultation</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Price</label>
+                                <div class="fw-semibold">$120.00</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Staff Member</label>
+                                <div class="fw-semibold">John Smith</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Payment Status</label>
+                                <div><span class="badge bg-success">Paid</span></div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Notes</label>
+                                <div class="p-3 bg-light rounded">Need to discuss Q4 strategy and marketing plans.</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">
+                            <i class="bi bi-pencil me-2"></i>Edit
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Appointment Modal -->
+        <div class="modal fade" id="editAppointmentModal" tabindex="-1">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Edit Appointment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="editAppointmentForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Customer</label>
+                                    <select class="form-select" required>
+                                        <option selected>Sarah Johnson</option>
+                                        <option>Michael Brown</option>
+                                        <option>Amanda Chen</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Service</label>
+                                    <select class="form-select" required>
+                                        <option selected>Business Consultation</option>
+                                        <option>Technical Support</option>
+                                        <option>Training Session</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Staff Member</label>
+                                    <select class="form-select" required>
+                                        <option selected>John Smith</option>
+                                        <option>Sarah Johnson</option>
+                                        <option>Michael Brown</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Status</label>
+                                    <select class="form-select" required>
+                                        <option selected>Confirmed</option>
+                                        <option>Pending</option>
+                                        <option>Completed</option>
+                                        <option>Cancelled</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Date</label>
+                                    <input type="date" class="form-control" value="2026-01-15" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Time</label>
+                                    <input type="time" class="form-control" value="09:00" required>
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label">Notes</label>
+                                    <textarea class="form-control"
+                                        rows="3">Need to discuss Q4 strategy and marketing plans.</textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary" id="updateAppointment">Update Appointment</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <!-- Bootstrap 5 JS Bundle -->
