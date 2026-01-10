@@ -645,6 +645,148 @@
             </div>
 
         </div>
+
+        <!-- ===== PAYMENTS MODALS ===== -->
+
+        <!-- Add Payment Method Modal -->
+        <div class="modal fade" id="addPaymentMethodModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Add Payment Method</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="addPaymentMethodForm">
+                            <div class="mb-3">
+                                <label class="form-label">Payment Method Type</label>
+                                <select class="form-select" id="paymentType" required>
+                                    <option value="">Select Type</option>
+                                    <option value="card">Credit/Debit Card</option>
+                                    <option value="paypal">PayPal</option>
+                                    <option value="bank">Bank Transfer</option>
+                                    <option value="cash">Cash</option>
+                                </select>
+                            </div>
+
+                            <!-- Card Fields -->
+                            <div id="cardFields" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">Card Number</label>
+                                    <input type="text" class="form-control" placeholder="1234 5678 9012 3456"
+                                        maxlength="19">
+                                </div>
+                                <div class="row g-3 mb-3">
+                                    <div class="col-6">
+                                        <label class="form-label">Expiry Date</label>
+                                        <input type="text" class="form-control" placeholder="MM/YY" maxlength="5">
+                                    </div>
+                                    <div class="col-6">
+                                        <label class="form-label">CVV</label>
+                                        <input type="text" class="form-control" placeholder="123" maxlength="4">
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Cardholder Name</label>
+                                    <input type="text" class="form-control" placeholder="John Doe">
+                                </div>
+                            </div>
+
+                            <!-- PayPal Fields -->
+                            <div id="paypalFields" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">PayPal Email</label>
+                                    <input type="email" class="form-control" placeholder="your@email.com">
+                                </div>
+                            </div>
+
+                            <!-- Bank Fields -->
+                            <div id="bankFields" style="display: none;">
+                                <div class="mb-3">
+                                    <label class="form-label">Bank Name</label>
+                                    <input type="text" class="form-control" placeholder="Bank of America">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Account Number</label>
+                                    <input type="text" class="form-control" placeholder="1234567890">
+                                </div>
+                                <div class="mb-3">
+                                    <label class="form-label">Routing Number</label>
+                                    <input type="text" class="form-control" placeholder="021000021">
+                                </div>
+                            </div>
+
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" id="setDefault">
+                                <label class="form-check-label" for="setDefault">
+                                    Set as default payment method
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Add Payment Method</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- View Payment Modal -->
+        <div class="modal fade" id="viewPaymentModal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Payment Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <label class="text-muted small">Transaction ID</label>
+                                <div class="fw-semibold">#TXN1245</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Status</label>
+                                <div><span class="badge bg-success">Completed</span></div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Date</label>
+                                <div class="fw-semibold">Jan 15, 2026</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Time</label>
+                                <div class="fw-semibold">09:30 AM</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Customer</label>
+                                <div class="fw-semibold">Sarah Johnson</div>
+                            </div>
+                            <div class="col-md-12">
+                                <label class="text-muted small">Service</label>
+                                <div class="fw-semibold">Business Consultation</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Payment Method</label>
+                                <div>Credit Card (•••• 4242)</div>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small">Amount</label>
+                                <div class="fw-semibold text-success">$120.00</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-outline-primary">
+                            <i class="bi bi-receipt me-2"></i>View Receipt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
     <!-- Sidebar Overlay (Mobile) -->
