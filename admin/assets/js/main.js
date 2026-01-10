@@ -172,3 +172,55 @@ window.ChartColors = {
     info: '#3b82f6',
     gray: '#64748b'
 };
+
+
+/* =========================================
+   ADMIN MODALS - SCRIPTS
+   ========================================= */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    // ===== UPDATE APPOINTMENT =====
+    const updateAppointmentBtn = document.getElementById('updateAppointment');
+    if (updateAppointmentBtn) {
+        updateAppointmentBtn.addEventListener('click', () => {
+            const form = document.getElementById('editAppointmentForm');
+            if (form.checkValidity()) {
+                AdminUtils.showToast('Appointment updated successfully!', 'success');
+                bootstrap.Modal.getInstance(document.getElementById('editAppointmentModal')).hide();
+            } else {
+                form.reportValidity();
+            }
+        });
+    }
+
+    // ===== UPDATE SERVICE =====
+    const updateServiceBtn = document.getElementById('updateService');
+    if (updateServiceBtn) {
+        updateServiceBtn.addEventListener('click', () => {
+            const form = document.getElementById('editServiceForm');
+            if (form.checkValidity()) {
+                AdminUtils.showToast('Service updated successfully!', 'success');
+                bootstrap.Modal.getInstance(document.getElementById('editServiceModal')).hide();
+            } else {
+                form.reportValidity();
+            }
+        });
+    }
+
+    // ===== UPDATE TEMPLATE =====
+    const updateTemplateBtn = document.getElementById('updateTemplate');
+    if (updateTemplateBtn) {
+        updateTemplateBtn.addEventListener('click', () => {
+            const form = document.getElementById('editTemplateForm');
+            if (form.checkValidity()) {
+                AdminUtils.showToast('Template updated successfully!', 'success');
+                bootstrap.Modal.getInstance(document.getElementById('editTemplateModal')).hide();
+            } else {
+                form.reportValidity();
+            }
+        });
+    }
+
+    console.log('%c📋 Admin Modals Loaded', 'color: #6366f1; font-size: 14px; font-weight: bold;');
+});

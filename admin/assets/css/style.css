@@ -507,3 +507,41 @@ body {
         font-size: 1.5rem;
     }
 }
+
+
+/* =========================================
+   ADMIN MODALS - STYLES
+   ========================================= */
+
+.service-detail-header .service-icon-large {
+    width: 80px;
+    height: 80px;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2.5rem;
+}
+
+.service-icon-large.bg-primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+}
+
+.payment-amount-large {
+    font-size: 3rem;
+    font-weight: 800;
+}
+
+.email-preview {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.email-preview p {
+    margin-bottom: 1rem;
+}
+
+.email-preview ul {
+    margin-left: 1.5rem;
+}
