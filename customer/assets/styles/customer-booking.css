@@ -1,0 +1,716 @@
+/* =========================================
+   BOOKING PAGE STYLES
+   ========================================= */
+
+/* ===== WIZARD CONTAINER ===== */
+.booking-wizard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ===== PROGRESS STEPS ===== */
+.wizard-progress {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.step-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: relative;
+}
+
+.step-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: var(--light);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: var(--transition);
+    border: 3px solid var(--light);
+}
+
+.step-circle i {
+    font-size: 1.5rem;
+    color: var(--gray);
+    transition: var(--transition);
+}
+
+.step-circle .step-number {
+    position: absolute;
+    font-weight: 800;
+    color: var(--gray);
+    transition: var(--transition);
+}
+
+.step-indicator.active .step-circle {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-color: var(--primary);
+    transform: scale(1.1);
+}
+
+.step-indicator.active .step-circle i,
+.step-indicator.active .step-circle .step-number {
+    color: white;
+}
+
+.step-indicator.completed .step-circle {
+    background: var(--success);
+    border-color: var(--success);
+}
+
+.step-indicator.completed .step-circle i {
+    color: white;
+}
+
+.step-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--gray);
+    text-align: center;
+    transition: var(--transition);
+}
+
+.step-indicator.active .step-label {
+    color: var(--primary);
+    font-weight: 700;
+}
+
+.progress-line {
+    width: 80px;
+    height: 3px;
+    background: var(--light);
+    position: relative;
+    margin: 0 0.5rem;
+}
+
+.progress-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background: var(--primary);
+    transition: width 0.5s ease;
+}
+
+.progress-line.completed::after {
+    width: 100%;
+}
+
+/* ===== WIZARD CONTENT ===== */
+.wizard-content {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    padding: 3rem;
+    min-height: 500px;
+}
+
+.wizard-step {
+    display: none;
+    animation: fadeSlideIn 0.5s ease-out;
+}
+
+.wizard-step.active {
+    display: block;
+}
+
+@keyframes fadeSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.step-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.step-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.step-subtitle {
+    color: var(--gray);
+    font-size: 1.125rem;
+}
+
+/* ===== STEP 1: SERVICES GRID ===== */
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.service-card-wizard {
+    background: white;
+    border: 2px solid var(--light);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.service-card-wizard:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.service-card-wizard.selected {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.service-icon-wrapper {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.service-icon-wrapper i {
+    font-size: 2.5rem;
+    color: white;
+}
+
+.service-card-wizard h4 {
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: var(--dark);
+}
+
+.service-card-wizard p {
+    color: var(--gray);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+.service-meta {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 0.875rem;
+    color: var(--gray);
+}
+
+.service-meta span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ===== STEP 2: PROVIDERS GRID ===== */
+.providers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.provider-card-wizard {
+    background: white;
+    border: 2px solid var(--light);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.provider-card-wizard:hover {
+    border-color: var(--primary);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.provider-card-wizard.selected {
+    border-color: var(--primary);
+    background: rgba(99, 102, 241, 0.05);
+    box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.provider-image {
+    position: relative;
+    height: 200px;
+}
+
+.provider-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.provider-status {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.provider-status.available {
+    background: rgba(16, 185, 129, 0.9);
+    color: white;
+}
+
+.provider-status.busy {
+    background: rgba(239, 68, 68, 0.9);
+    color: white;
+}
+
+.provider-info {
+    padding: 1.5rem;
+    text-align: center;
+}
+
+.provider-info h4 {
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--dark);
+}
+
+.provider-role {
+    color: var(--gray);
+    font-size: 0.875rem;
+    display: block;
+    margin-bottom: 0.75rem;
+}
+
+.provider-rating {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.25rem;
+    margin-bottom: 1rem;
+}
+
+.provider-rating i {
+    color: var(--warning);
+    font-size: 0.9rem;
+}
+
+.provider-rating span {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-left: 0.5rem;
+}
+
+.provider-bio {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+.any-provider {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+.any-provider-icon {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, var(--secondary) 0%, #db2777 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.any-provider-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+/* ===== STEP 3: DATE & TIME ===== */
+.datetime-selector {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.calendar-section {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.calendar-nav-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: white;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.calendar-nav-btn:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.current-month-year {
+    font-weight: 700;
+    color: var(--dark);
+    margin: 0;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.weekday {
+    text-align: center;
+    font-weight: 600;
+    color: var(--gray);
+    font-size: 0.875rem;
+    padding: 0.5rem;
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0.5rem;
+}
+
+.calendar-day {
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: white;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: var(--transition);
+    border: 2px solid transparent;
+}
+
+.calendar-day:hover {
+    border-color: var(--primary);
+}
+
+.calendar-day.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.calendar-day.selected {
+    background: var(--primary);
+    color: white;
+    font-weight: 700;
+}
+
+.calendar-day.today {
+    border-color: var(--warning);
+}
+
+.timeslots-section {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 1rem;
+}
+
+.timeslots-title {
+    font-weight: 700;
+    color: var(--dark);
+    margin-bottom: 0.5rem;
+}
+
+.selected-date-display {
+    color: var(--gray);
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+}
+
+.timeslots-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+}
+
+.timeslot {
+    padding: 0.75rem;
+    background: white;
+    border: 2px solid transparent;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.timeslot:hover {
+    border-color: var(--primary);
+}
+
+.timeslot.selected {
+    background: var(--primary);
+    color: white;
+}
+
+.timeslot.booked {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.no-date-selected {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem 1rem;
+    color: var(--gray);
+}
+
+.no-date-selected i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    display: block;
+}
+
+/* ===== STEP 4: DETAILS FORM ===== */
+.details-form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* ===== STEP 5: CONFIRMATION ===== */
+.confirmation-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.confirmation-card {
+    background: var(--light);
+    border-radius: 1rem;
+    padding: 3rem;
+    text-align: center;
+}
+
+.confirmation-icon {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 2rem;
+    background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.confirmation-icon i {
+    font-size: 3rem;
+    color: white;
+}
+
+.confirmation-card h3 {
+    font-weight: 800;
+    color: var(--dark);
+    margin-bottom: 2rem;
+}
+
+.summary-section {
+    margin-bottom: 1.5rem;
+}
+
+.summary-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.summary-label {
+    font-weight: 600;
+    color: var(--gray);
+}
+
+.summary-value {
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.summary-divider {
+    height: 2px;
+    background: var(--gray-light);
+    margin: 1.5rem 0;
+}
+
+.summary-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.total-label {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--dark);
+}
+
+.total-value {
+    font-size: 2rem;
+    font-weight: 900;
+    color: var(--primary);
+}
+
+/* ===== WIZARD NAVIGATION ===== */
+.wizard-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    gap: 1rem;
+}
+
+.wizard-navigation .btn {
+    padding: 0.875rem 2rem;
+    font-weight: 600;
+}
+
+/* ===== SUCCESS MODAL ===== */
+.success-animation {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto;
+    background: rgba(16, 185, 129, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: successPulse 1s ease-out;
+}
+
+.success-animation i {
+    font-size: 4rem;
+}
+
+@keyframes successPulse {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 991px) {
+    .wizard-progress {
+        overflow-x: auto;
+        justify-content: flex-start;
+    }
+    
+    .progress-line {
+        width: 40px;
+    }
+    
+    .datetime-selector {
+        grid-template-columns: 1fr;
+    }
+    
+    .wizard-content {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .services-grid,
+    .providers-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .step-title {
+        font-size: 1.5rem;
+    }
+    
+    .step-subtitle {
+        font-size: 1rem;
+    }
+    
+    .wizard-navigation .btn {
+        flex: 1;
+    }
+    
+    .timeslots-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .wizard-content {
+        padding: 1.5rem;
+    }
+    
+    .step-circle {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .step-label {
+        font-size: 0.75rem;
+    }
+    
+    .confirmation-card {
+        padding: 2rem 1.5rem;
+    }
+}

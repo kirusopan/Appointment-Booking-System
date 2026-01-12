@@ -21,6 +21,7 @@
     <!-- Dashboard CSS -->
     <link rel="stylesheet" href="assets/styles/dashboard.css">
     <link rel="stylesheet" href="assets/styles/customer.css">
+    <link rel="stylesheet" href="assets/styles/customer-booking.css">
 </head>
 
 <body>
@@ -181,8 +182,481 @@
         <!-- ===== PAGE CONTENT AREA ===== -->
         <main class="content-area">
 
-            
-            
+            <!-- ===== BOOKING WIZARD CONTAINER ===== -->
+            <div class="booking-wizard-container">
+
+                <!-- ===== PROGRESS STEPS ===== -->
+                <div class="wizard-progress">
+                    <div class="step-indicator active" data-step="1">
+                        <div class="step-circle">
+                            <i class="bi bi-grid"></i>
+                            <span class="step-number">1</span>
+                        </div>
+                        <span class="step-label">Select Service</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="step-indicator" data-step="2">
+                        <div class="step-circle">
+                            <i class="bi bi-person"></i>
+                            <span class="step-number">2</span>
+                        </div>
+                        <span class="step-label">Choose Provider</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="step-indicator" data-step="3">
+                        <div class="step-circle">
+                            <i class="bi bi-calendar"></i>
+                            <span class="step-number">3</span>
+                        </div>
+                        <span class="step-label">Date & Time</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="step-indicator" data-step="4">
+                        <div class="step-circle">
+                            <i class="bi bi-card-text"></i>
+                            <span class="step-number">4</span>
+                        </div>
+                        <span class="step-label">Your Details</span>
+                    </div>
+                    <div class="progress-line"></div>
+                    <div class="step-indicator" data-step="5">
+                        <div class="step-circle">
+                            <i class="bi bi-check-circle"></i>
+                            <span class="step-number">5</span>
+                        </div>
+                        <span class="step-label">Confirm</span>
+                    </div>
+                </div>
+
+                <!-- ===== WIZARD CONTENT ===== -->
+                <div class="wizard-content">
+
+                    <!-- STEP 1: SELECT SERVICE -->
+                    <div class="wizard-step active" id="step1">
+                        <div class="step-header">
+                            <h2 class="step-title">Select a Service</h2>
+                            <p class="step-subtitle">Choose the service you'd like to book</p>
+                        </div>
+
+                        <div class="services-grid">
+                            <!-- Service Card 1 -->
+                            <div class="service-card-wizard" data-service="consultation" data-price="50"
+                                data-duration="60">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-chat-dots"></i>
+                                </div>
+                                <h4>Personal Consultation</h4>
+                                <p>One-on-one professional consultation session</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 60 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $50</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+
+                            <!-- Service Card 2 -->
+                            <div class="service-card-wizard" data-service="business" data-price="120"
+                                data-duration="90">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-briefcase"></i>
+                                </div>
+                                <h4>Business Strategy</h4>
+                                <p>Strategic planning and business consultation</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 90 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $120</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+
+                            <!-- Service Card 3 -->
+                            <div class="service-card-wizard" data-service="training" data-price="80"
+                                data-duration="120">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-book"></i>
+                                </div>
+                                <h4>Skills Training</h4>
+                                <p>Professional skills development training</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 120 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $80</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+
+                            <!-- Service Card 4 -->
+                            <div class="service-card-wizard" data-service="support" data-price="40" data-duration="45">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-wrench"></i>
+                                </div>
+                                <h4>Technical Support</h4>
+                                <p>Expert technical assistance and troubleshooting</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 45 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $40</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+
+                            <!-- Service Card 5 -->
+                            <div class="service-card-wizard" data-service="wellness" data-price="60" data-duration="60">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-heart"></i>
+                                </div>
+                                <h4>Wellness Coaching</h4>
+                                <p>Holistic wellness and lifestyle guidance</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 60 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $60</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+
+                            <!-- Service Card 6 -->
+                            <div class="service-card-wizard" data-service="financial" data-price="150"
+                                data-duration="90">
+                                <div class="service-icon-wrapper">
+                                    <i class="bi bi-graph-up"></i>
+                                </div>
+                                <h4>Financial Planning</h4>
+                                <p>Comprehensive financial strategy consultation</p>
+                                <div class="service-meta">
+                                    <span><i class="bi bi-clock"></i> 90 min</span>
+                                    <span><i class="bi bi-currency-dollar"></i> $150</span>
+                                </div>
+                                <button class="btn btn-outline-primary select-service-btn">Select</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 2: CHOOSE PROVIDER -->
+                    <div class="wizard-step" id="step2">
+                        <div class="step-header">
+                            <h2 class="step-title">Choose Your Provider</h2>
+                            <p class="step-subtitle">Select a professional to work with</p>
+                        </div>
+
+                        <div class="providers-grid">
+                            <!-- Provider Card 1 -->
+                            <div class="provider-card-wizard" data-provider="sarah">
+                                <div class="provider-image">
+                                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&q=80"
+                                        alt="Sarah Johnson">
+                                    <span class="provider-status available">Available</span>
+                                </div>
+                                <div class="provider-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <span class="provider-role">Senior Consultant</span>
+                                    <div class="provider-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>(4.9)</span>
+                                    </div>
+                                    <p class="provider-bio">Expert in business strategy with 10+ years experience</p>
+                                    <button class="btn btn-outline-primary select-provider-btn">Select</button>
+                                </div>
+                            </div>
+
+                            <!-- Provider Card 2 -->
+                            <div class="provider-card-wizard" data-provider="john">
+                                <div class="provider-image">
+                                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&q=80"
+                                        alt="John Smith">
+                                    <span class="provider-status available">Available</span>
+                                </div>
+                                <div class="provider-info">
+                                    <h4>John Smith</h4>
+                                    <span class="provider-role">Business Advisor</span>
+                                    <div class="provider-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-half"></i>
+                                        <span>(4.8)</span>
+                                    </div>
+                                    <p class="provider-bio">Specialized in career development and personal growth</p>
+                                    <button class="btn btn-outline-primary select-provider-btn">Select</button>
+                                </div>
+                            </div>
+
+                            <!-- Provider Card 3 -->
+                            <div class="provider-card-wizard" data-provider="michael">
+                                <div class="provider-image">
+                                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&q=80"
+                                        alt="Michael Brown">
+                                    <span class="provider-status busy">Busy</span>
+                                </div>
+                                <div class="provider-info">
+                                    <h4>Michael Brown</h4>
+                                    <span class="provider-role">Training Specialist</span>
+                                    <div class="provider-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>(5.0)</span>
+                                    </div>
+                                    <p class="provider-bio">Technical expert with hands-on training approach</p>
+                                    <button class="btn btn-outline-primary select-provider-btn">Select</button>
+                                </div>
+                            </div>
+
+                            <!-- Provider Card 4 -->
+                            <div class="provider-card-wizard" data-provider="emily">
+                                <div class="provider-image">
+                                    <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&q=80"
+                                        alt="Emily Davis">
+                                    <span class="provider-status available">Available</span>
+                                </div>
+                                <div class="provider-info">
+                                    <h4>Emily Davis</h4>
+                                    <span class="provider-role">Wellness Coach</span>
+                                    <div class="provider-rating">
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <i class="bi bi-star-fill"></i>
+                                        <span>(4.9)</span>
+                                    </div>
+                                    <p class="provider-bio">Holistic wellness expert focused on balanced living</p>
+                                    <button class="btn btn-outline-primary select-provider-btn">Select</button>
+                                </div>
+                            </div>
+
+                            <!-- Any Provider Option -->
+                            <div class="provider-card-wizard any-provider" data-provider="any">
+                                <div class="any-provider-icon">
+                                    <i class="bi bi-people"></i>
+                                </div>
+                                <div class="provider-info">
+                                    <h4>Any Available Provider</h4>
+                                    <span class="provider-role">First Available</span>
+                                    <p class="provider-bio">We'll match you with the next available professional</p>
+                                    <button class="btn btn-outline-primary select-provider-btn">Select</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: DATE & TIME -->
+                    <div class="wizard-step" id="step3">
+                        <div class="step-header">
+                            <h2 class="step-title">Select Date & Time</h2>
+                            <p class="step-subtitle">Choose your preferred appointment slot</p>
+                        </div>
+
+                        <div class="datetime-selector">
+                            <div class="calendar-section">
+                                <div class="calendar-header">
+                                    <button class="calendar-nav-btn" id="prevMonth">
+                                        <i class="bi bi-chevron-left"></i>
+                                    </button>
+                                    <h4 class="current-month-year">December 2024</h4>
+                                    <button class="calendar-nav-btn" id="nextMonth">
+                                        <i class="bi bi-chevron-right"></i>
+                                    </button>
+                                </div>
+
+                                <div class="calendar-grid">
+                                    <div class="calendar-weekdays">
+                                        <div class="weekday">Sun</div>
+                                        <div class="weekday">Mon</div>
+                                        <div class="weekday">Tue</div>
+                                        <div class="weekday">Wed</div>
+                                        <div class="weekday">Thu</div>
+                                        <div class="weekday">Fri</div>
+                                        <div class="weekday">Sat</div>
+                                    </div>
+                                    <div class="calendar-days" id="calendarDays">
+                                        <!-- Calendar days will be generated by JavaScript -->
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="timeslots-section">
+                                <h4 class="timeslots-title">Available Time Slots</h4>
+                                <p class="selected-date-display">Please select a date</p>
+
+                                <div class="timeslots-grid" id="timeslotsGrid">
+                                    <!-- Time slots will be generated by JavaScript -->
+                                    <div class="no-date-selected">
+                                        <i class="bi bi-calendar-event"></i>
+                                        <p>Select a date to view available times</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 4: YOUR DETAILS -->
+                    <div class="wizard-step" id="step4">
+                        <div class="step-header">
+                            <h2 class="step-title">Your Information</h2>
+                            <p class="step-subtitle">Please provide your contact details</p>
+                        </div>
+
+                        <div class="details-form">
+                            <div class="row g-4">
+                                <div class="col-md-6">
+                                    <label class="form-label">First Name *</label>
+                                    <input type="text" class="form-control" id="firstName"
+                                        placeholder="Enter your first name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Last Name *</label>
+                                    <input type="text" class="form-control" id="lastName"
+                                        placeholder="Enter your last name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email Address *</label>
+                                    <input type="email" class="form-control" id="email" placeholder="your@email.com"
+                                        required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone Number *</label>
+                                    <input type="tel" class="form-control" id="phone" placeholder="+1 (555) 000-0000"
+                                        required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Additional Notes (Optional)</label>
+                                    <textarea class="form-control" id="notes" rows="4"
+                                        placeholder="Any special requests or information we should know..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="smsReminder">
+                                        <label class="form-check-label" for="smsReminder">
+                                            Send me SMS reminders before the appointment
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="checkbox" id="termsAgree" required>
+                                        <label class="form-check-label" for="termsAgree">
+                                            I agree to the <a href="#">terms and conditions</a> and <a href="#">privacy
+                                                policy</a>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- STEP 5: CONFIRMATION -->
+                    <div class="wizard-step" id="step5">
+                        <div class="step-header">
+                            <h2 class="step-title">Confirm Your Booking</h2>
+                            <p class="step-subtitle">Review your appointment details before confirming</p>
+                        </div>
+
+                        <div class="confirmation-container">
+                            <div class="confirmation-card">
+                                <div class="confirmation-icon">
+                                    <i class="bi bi-calendar-check"></i>
+                                </div>
+                                <h3>Appointment Summary</h3>
+
+                                <div class="summary-section">
+                                    <div class="summary-item">
+                                        <span class="summary-label">Service</span>
+                                        <span class="summary-value" id="summaryService">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Provider</span>
+                                        <span class="summary-value" id="summaryProvider">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Date</span>
+                                        <span class="summary-value" id="summaryDate">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Time</span>
+                                        <span class="summary-value" id="summaryTime">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Duration</span>
+                                        <span class="summary-value" id="summaryDuration">-</span>
+                                    </div>
+                                </div>
+
+                                <div class="summary-divider"></div>
+
+                                <div class="summary-section">
+                                    <div class="summary-item">
+                                        <span class="summary-label">Customer</span>
+                                        <span class="summary-value" id="summaryCustomer">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Email</span>
+                                        <span class="summary-value" id="summaryEmail">-</span>
+                                    </div>
+                                    <div class="summary-item">
+                                        <span class="summary-label">Phone</span>
+                                        <span class="summary-value" id="summaryPhone">-</span>
+                                    </div>
+                                </div>
+
+                                <div class="summary-divider"></div>
+
+                                <div class="summary-total">
+                                    <span class="total-label">Total Amount</span>
+                                    <span class="total-value" id="summaryTotal">$0.00</span>
+                                </div>
+
+                                <div class="confirmation-actions">
+                                    <button class="btn btn-lg btn-primary w-100" id="confirmBookingBtn">
+                                        <i class="bi bi-check-circle me-2"></i>Confirm Booking
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- ===== WIZARD NAVIGATION ===== -->
+                <div class="wizard-navigation">
+                    <button class="btn btn-outline-secondary" id="prevBtn" style="display: none;">
+                        <i class="bi bi-arrow-left me-2"></i>Previous
+                    </button>
+                    <button class="btn btn-primary" id="nextBtn" style="display: none;">
+                        Next<i class="bi bi-arrow-right ms-2"></i>
+                    </button>
+                </div>
+
+            </div>
+
+            <!-- ===== SUCCESS MODAL ===== -->
+            <div class="modal fade" id="successModal" tabindex="-1">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content">
+                        <div class="modal-body text-center p-5">
+                            <div class="success-animation">
+                                <i class="bi bi-check-circle-fill text-success"></i>
+                            </div>
+                            <h3 class="mt-4 mb-3">Booking Confirmed!</h3>
+                            <p class="text-muted mb-4">Your appointment has been successfully booked. We've sent a
+                                confirmation email to your address.</p>
+                            <div class="d-flex gap-2">
+                                <a href="dashboard-appointments.html" class="btn btn-primary flex-fill">
+                                    <i class="bi bi-calendar-check me-2"></i>View Appointments
+                                </a>
+                                <a href="dashboard.html" class="btn btn-outline-secondary flex-fill">
+                                    <i class="bi bi-house me-2"></i>Go to Dashboard
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </main>
 
     </div>
@@ -195,7 +669,7 @@
 
     <!-- Dashboard JS -->
     <script src="assets/js/dashboard.js"></script>
-    <script src="assets/js/customer.js"></script>
+    <script src="assets/js/customer-booking.js"></script>
 </body>
 
 </html>
